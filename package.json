@@ -2,6 +2,7 @@
   "name": "cv-application",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://artis-dev.github.io/cv-application",
   "dependencies": {
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
@@ -16,10 +17,13 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.5.0",
+    "gh-pages": "^4.0.0",
     "prettier": "2.6.2"
   },
   "scripts": {
     "start": "react-scripts start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "eject": "react-scripts eject"
