@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Header from './components/Header';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -14,7 +16,12 @@ class App extends React.Component {
   render() {
     const { cv } = this.state;
 
-    return <p className="text-center">{cv.name}</p>;
+    return (
+      <div>
+        <Header />
+        <p className="text-center">{cv.name}</p>
+      </div>
+    );
   }
 }
 
