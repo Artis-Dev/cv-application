@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Header from './components/Header';
+import Main from './components/Main';
 import Footer from './components/Footer';
 
 class App extends React.Component {
@@ -18,9 +19,9 @@ class App extends React.Component {
     const { cv } = this.state;
 
     return (
-      <div className="flex h-screen flex-col">
+      <div className="flex h-screen flex-col bg-slate-100">
         <Header />
-        <p className="grow py-4 text-center">{cv.name}</p>
+        <Main cv={cv} />
         <Footer />
       </div>
     );
