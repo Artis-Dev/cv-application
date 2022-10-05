@@ -11,9 +11,9 @@ class Builder extends React.Component {
       cvData: {
         contacts: {
           mail: 'my@email.com',
-          phone: '',
-          linkedin: '',
-          github: '',
+          phone: '123456789',
+          linkedin: '/in/username',
+          github: '/username',
           isEditable: false,
         },
       },
