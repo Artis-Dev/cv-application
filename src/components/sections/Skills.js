@@ -4,7 +4,7 @@ function Skills(props) {
   const { skillsets } = props;
 
   return (
-    <div className="mb-2">
+    <div className="mb-4">
       <p className="pb-1 text-xl font-bold">SKILLS</p>
       <div>
         {skillsets.map((skillset) => {

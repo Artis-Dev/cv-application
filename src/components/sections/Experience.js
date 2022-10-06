@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 function Experience(props) {
   const { experience } = props;
   return (
-    <div className="mb-2">
+    <div className="mb-4">
       <p className="pb-1 text-xl font-bold">EXPERIENCE</p>
       <div>
         {experience.map((job) => {
