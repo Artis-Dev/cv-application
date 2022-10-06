@@ -20,6 +20,9 @@ class Builder extends React.Component {
           fullName: 'Name Surname',
           title: 'Title',
         },
+        about: {
+          summary: 'info info info info info info info',
+        },
       },
     };
   }
