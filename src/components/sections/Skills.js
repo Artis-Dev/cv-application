@@ -28,7 +28,7 @@ function Skills(props) {
 }
 
 Skills.propTypes = {
-  skillsets: PropTypes.shape([]).isRequired,
+  skillsets: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 
 export default Skills;
