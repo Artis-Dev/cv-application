@@ -1,27 +1,24 @@
 import PropTypes from 'prop-types';
 
 function Contacts(props) {
-  const { cvData } = props;
-
-  console.log(cvData.contacts);
+  const { contacts } = props;
 
   return (
     <div className="flex gap-x-8 text-sm">
       <div className="w-1/2">
         <p className="font-bold">
-          Mail: <span className="font-normal">{cvData.contacts.mail}</span>
+          Mail: <span className="font-normal">{contacts.mail}</span>
         </p>
         <p className="font-bold">
-          Phone: <span className="font-normal">{cvData.contacts.phone}</span>
+          Phone: <span className="font-normal">{contacts.phone}</span>
         </p>
       </div>
       <div className="w-1/2">
         <p className="font-bold">
-          LinkedIn:{' '}
-          <span className="font-normal">{cvData.contacts.linkedin}</span>
+          LinkedIn: <span className="font-normal">{contacts.linkedin}</span>
         </p>
         <p className="font-bold">
-          GitHub: <span className="font-normal">{cvData.contacts.github}</span>
+          GitHub: <span className="font-normal">{contacts.github}</span>
         </p>
       </div>
     </div>
@@ -29,13 +26,11 @@ function Contacts(props) {
 }
 
 Contacts.propTypes = {
-  cvData: PropTypes.shape({
-    contacts: PropTypes.shape({
-      mail: PropTypes.string,
-      phone: PropTypes.string,
-      linkedin: PropTypes.string,
-      github: PropTypes.string,
-    }),
+  contacts: PropTypes.shape({
+    mail: PropTypes.string,
+    phone: PropTypes.string,
+    linkedin: PropTypes.string,
+    github: PropTypes.string,
   }).isRequired,
 };
 

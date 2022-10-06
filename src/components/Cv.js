@@ -7,7 +7,7 @@ function Cv(props) {
 
   return (
     <div className="container mx-auto my-8 max-w-3xl bg-white py-8 px-16">
-      <Contacts cvData={cvData} />
+      <Contacts contacts={cvData.contacts} />
       {/* Heading */}
       {/* About */}
       {/* Skills */}
@@ -18,7 +18,9 @@ function Cv(props) {
 }
 
 Cv.propTypes = {
-  cvData: PropTypes.shape({}).isRequired,
+  cvData: PropTypes.shape({
+    contacts: PropTypes.shape({}),
+  }).isRequired,
 };
 
 export default Cv;
