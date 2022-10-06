@@ -16,6 +16,10 @@ class Builder extends React.Component {
           github: '/username',
           isEditable: false,
         },
+        heading: {
+          fullName: 'Name Surname',
+          title: 'Title',
+        },
       },
     };
   }
