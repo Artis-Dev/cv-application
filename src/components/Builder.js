@@ -63,6 +63,17 @@ class Builder extends React.Component {
             isEditable: false,
           },
         ],
+        education: [
+          {
+            field: 'Computer Science',
+            school: 'Harvard University',
+            from: '2016',
+            to: '2020',
+            description: 'info info info',
+            id: uniqid(),
+            isEditable: false,
+          },
+        ],
       },
     };
   }

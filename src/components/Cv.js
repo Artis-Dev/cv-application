@@ -5,6 +5,7 @@ import Heading from './sections/Heading';
 import About from './sections/About';
 import Skills from './sections/Skills';
 import Experience from './sections/Experience';
+import Education from './sections/Education';
 
 function Cv(props) {
   const { cvData } = props;
@@ -15,7 +16,7 @@ function Cv(props) {
       <About about={cvData.about} />
       <Skills skillsets={cvData.skillsets} />
       <Experience experience={cvData.experience} />
-      {/* Education */}
+      <Education education={cvData.education} />
     </div>
   );
 }
@@ -27,6 +28,7 @@ Cv.propTypes = {
     about: PropTypes.shape({}),
     skillsets: PropTypes.arrayOf(PropTypes.shape({})),
     experience: PropTypes.arrayOf(PropTypes.shape({})),
+    education: PropTypes.arrayOf(PropTypes.shape({})),
   }).isRequired,
 };
 
