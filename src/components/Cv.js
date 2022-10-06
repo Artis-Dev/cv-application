@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Contacts from './sections/Contacts';
 import Heading from './sections/Heading';
 import About from './sections/About';
+import Skills from './sections/Skills';
 
 function Cv(props) {
   const { cvData } = props;
@@ -12,7 +13,7 @@ function Cv(props) {
       <Contacts contacts={cvData.contacts} />
       <Heading heading={cvData.heading} />
       <About about={cvData.about} />
-      {/* Skills */}
+      <Skills skillsets={cvData.skillsets} />
       {/* Experience */}
       {/* Education */}
     </div>
@@ -24,6 +25,7 @@ Cv.propTypes = {
     contacts: PropTypes.shape({}),
     heading: PropTypes.shape({}),
     about: PropTypes.shape({}),
+    skillsets: PropTypes.shape([]),
   }).isRequired,
 };
 

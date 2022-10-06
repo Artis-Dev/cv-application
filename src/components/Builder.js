@@ -19,10 +19,30 @@ class Builder extends React.Component {
         heading: {
           fullName: 'Name Surname',
           title: 'Title',
+          isEditable: false,
         },
         about: {
           summary: 'info info info info info info info',
+          isEditable: false,
         },
+        skillsets: [
+          {
+            title: 'Technical languages',
+            skills: ['JavaScript', 'CSS', 'HTML'],
+          },
+          {
+            title: 'Tools & Software',
+            skills: ['Git', 'GitHub', 'VSCode'],
+          },
+          {
+            title: 'Additional',
+            skills: ['Adobe Photoshop', 'Trello'],
+          },
+          {
+            title: 'Languages',
+            skills: ['English'],
+          },
+        ],
       },
     };
   }
