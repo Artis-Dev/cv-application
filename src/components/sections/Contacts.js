@@ -4,7 +4,7 @@ function Contacts(props) {
   const { contacts } = props;
 
   return (
-    <div className="flex gap-x-8 text-sm">
+    <div className="mb-4 flex gap-x-8 text-sm">
       <div className="w-1/2">
         <p className="font-bold">
           Mail: <span className="font-normal">{contacts.mail}</span>
