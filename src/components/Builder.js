@@ -1,4 +1,5 @@
 import React from 'react';
+import uniqid from 'uniqid';
 
 import Button from './Button';
 import Cv from './Cv';
@@ -29,21 +30,25 @@ class Builder extends React.Component {
           {
             title: 'Technical languages',
             skills: ['JavaScript', 'CSS', 'HTML'],
+            id: uniqid(),
             isEditable: false,
           },
           {
             title: 'Tools & Software',
             skills: ['Git', 'GitHub', 'VSCode'],
+            id: uniqid(),
             isEditable: false,
           },
           {
             title: 'Additional',
             skills: ['Adobe Photoshop', 'Trello'],
+            id: uniqid(),
             isEditable: false,
           },
           {
             title: 'Languages',
             skills: ['English'],
+            id: uniqid(),
             isEditable: false,
           },
         ],
@@ -54,6 +59,7 @@ class Builder extends React.Component {
             from: '2020',
             to: '2022',
             description: 'info info info',
+            id: uniqid(),
             isEditable: false,
           },
         ],

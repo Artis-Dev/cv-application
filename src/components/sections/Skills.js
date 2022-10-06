@@ -9,14 +9,14 @@ function Skills(props) {
       <div>
         {skillsets.map((skillset) => {
           return (
-            <p className="font-bold">
+            <p key={skillset.id} className="font-bold">
               {skillset.title}:
               <span className="ml-2 font-normal">
                 {skillset.skills.map((skill, i) => {
                   if (i + 1 !== skillset.skills.length) {
-                    return <span>{skill}, </span>;
+                    return <span key={skill}>{skill}, </span>;
                   }
-                  return <span>{skill}</span>;
+                  return <span key={skill}>{skill}</span>;
                 })}
               </span>
             </p>

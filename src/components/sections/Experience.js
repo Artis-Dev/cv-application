@@ -8,7 +8,7 @@ function Experience(props) {
       <div>
         {experience.map((job) => {
           return (
-            <div className="mb-2">
+            <div key={job.id} className="mb-2">
               <p className="font-bold">
                 {job.position} -{' '}
                 <span className="font-normal italic">{job.company}</span>
