@@ -29,18 +29,32 @@ class Builder extends React.Component {
           {
             title: 'Technical languages',
             skills: ['JavaScript', 'CSS', 'HTML'],
+            isEditable: false,
           },
           {
             title: 'Tools & Software',
             skills: ['Git', 'GitHub', 'VSCode'],
+            isEditable: false,
           },
           {
             title: 'Additional',
             skills: ['Adobe Photoshop', 'Trello'],
+            isEditable: false,
           },
           {
             title: 'Languages',
             skills: ['English'],
+            isEditable: false,
+          },
+        ],
+        experience: [
+          {
+            position: 'Frontend Developer',
+            company: 'Google',
+            from: '2020',
+            to: '2022',
+            description: 'info info info',
+            isEditable: false,
           },
         ],
       },
