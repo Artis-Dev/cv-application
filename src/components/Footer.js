@@ -10,14 +10,16 @@ function Footer() {
       >
         ArtisDev
       </a>
-      <a
-        className="ml-4 border-l border-slate-500 underline decoration-slate-500 sm:pl-4"
-        href="https://github.com/Artis-Dev/cv-application"
-        target="_blank"
-        rel="noreferrer"
-      >
-        Source code
-      </a>
+      <p className="ml-4 border-l border-slate-500 pl-4">
+        <a
+          className="  underline decoration-slate-500 "
+          href="https://github.com/Artis-Dev/cv-application"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Source code
+        </a>
+      </p>
     </footer>
   );
 }
