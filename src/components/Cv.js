@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Contacts from './sections/Contacts';
 import EditableContacts from './sections/EditableContacts';
 import Heading from './sections/Heading';
+import EditableHeading from './sections/EditableHeading';
 import About from './sections/About';
 import Skills from './sections/Skills';
 import Experience from './sections/Experience';
@@ -14,8 +15,8 @@ function Cv(props) {
     return (
       <div className="container mx-auto my-8 max-w-3xl bg-white py-8 px-16">
         <EditableContacts contacts={cvData.contacts} />
-        {/* <Heading heading={cvData.heading} />
-        <About about={cvData.about} />
+        <EditableHeading heading={cvData.heading} />
+        {/* <About about={cvData.about} />
         <Skills skillsets={cvData.skillsets} />
         <Experience experience={cvData.experience} />
         <Education education={cvData.education} /> */}
