@@ -9,47 +9,41 @@ class Builder extends React.Component {
     super(props);
 
     this.state = {
+      editMode: true,
       cvData: {
         contacts: {
           mail: 'my@email.com',
           phone: '123456789',
           linkedin: '/in/username',
           github: '/username',
-          isEditable: false,
         },
         heading: {
           fullName: 'Name Surname',
           title: 'Title',
-          isEditable: false,
         },
         about: {
           summary: 'info info info info info info info',
-          isEditable: false,
         },
         skillsets: [
           {
             title: 'Technical languages',
             skills: ['JavaScript', 'CSS', 'HTML'],
             id: uniqid(),
-            isEditable: false,
           },
           {
             title: 'Tools & Software',
             skills: ['Git', 'GitHub', 'VSCode'],
             id: uniqid(),
-            isEditable: false,
           },
           {
             title: 'Additional',
             skills: ['Adobe Photoshop', 'Trello'],
             id: uniqid(),
-            isEditable: false,
           },
           {
             title: 'Languages',
             skills: ['English'],
             id: uniqid(),
-            isEditable: false,
           },
         ],
         experience: [
@@ -60,7 +54,6 @@ class Builder extends React.Component {
             to: '2022',
             description: 'info info info',
             id: uniqid(),
-            isEditable: false,
           },
         ],
         education: [
@@ -71,20 +64,28 @@ class Builder extends React.Component {
             to: '2020',
             description: 'info info info',
             id: uniqid(),
-            isEditable: false,
           },
         ],
       },
     };
   }
 
+  toggleMode = () => {
+    this.setState((prevState) => ({
+      editMode: !prevState.editMode,
+    }));
+  };
+
   render() {
-    const { cvData } = this.state;
+    const { cvData, editMode } = this.state;
+    const { toggleMode } = this;
 
     return (
       <main className="flex grow flex-col py-8 px-4">
-        <Button />
-        <Cv cvData={cvData} />
+        <div className="flex justify-center gap-8">
+          <Button toggleMode={toggleMode} editMode={editMode} />
+        </div>
+        <Cv cvData={cvData} editMode={editMode} />
       </main>
     );
   }
