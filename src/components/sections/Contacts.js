@@ -6,18 +6,18 @@ function Contacts(props) {
   return (
     <div className="mb-4 flex gap-x-8 text-sm">
       <div className="w-1/2">
-        <p className="font-bold">
+        <p className="mb-1 font-bold">
           Mail: <span className="font-normal">{contacts.mail}</span>
         </p>
-        <p className="font-bold">
+        <p className="mb-1 font-bold">
           Phone: <span className="font-normal">{contacts.phone}</span>
         </p>
       </div>
       <div className="w-1/2">
-        <p className="font-bold">
+        <p className="mb-1 font-bold">
           LinkedIn: <span className="font-normal">{contacts.linkedin}</span>
         </p>
-        <p className="font-bold">
+        <p className="mb-1 font-bold">
           GitHub: <span className="font-normal">{contacts.github}</span>
         </p>
       </div>
