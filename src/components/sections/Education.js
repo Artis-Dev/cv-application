@@ -4,7 +4,7 @@ function Education(props) {
   const { education } = props;
   return (
     <div className="mb-4">
-      <p className="pb-1 text-xl font-bold">EXPERIENCE</p>
+      <p className="mb-1 text-xl font-bold uppercase">Education</p>
       <div>
         {education.map((edu) => {
           return (
