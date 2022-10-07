@@ -5,6 +5,7 @@ import EditableContacts from './sections/EditableContacts';
 import Heading from './sections/Heading';
 import EditableHeading from './sections/EditableHeading';
 import About from './sections/About';
+import EditableAbout from './sections/EditableAbout';
 import Skills from './sections/Skills';
 import Experience from './sections/Experience';
 import Education from './sections/Education';
@@ -16,8 +17,8 @@ function Cv(props) {
       <div className="container mx-auto my-8 max-w-3xl bg-white py-8 px-16">
         <EditableContacts contacts={cvData.contacts} />
         <EditableHeading heading={cvData.heading} />
-        {/* <About about={cvData.about} />
-        <Skills skillsets={cvData.skillsets} />
+        <EditableAbout about={cvData.about} />
+        {/* <Skills skillsets={cvData.skillsets} />
         <Experience experience={cvData.experience} />
         <Education education={cvData.education} /> */}
       </div>
