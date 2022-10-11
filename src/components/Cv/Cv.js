@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 import ContactList from './preview/ContactList';
-import EditContacts from './edit/EditContacts';
+import EditContactList from './edit/EditContactList';
 import Heading from './preview/Heading';
 import EditHeading from './edit/EditHeading';
 import About from './preview/About';
@@ -15,7 +15,7 @@ function Cv(props) {
   if (editMode) {
     return (
       <div className="container mx-auto my-8 max-w-3xl bg-white py-8 px-16">
-        <EditContacts
+        <EditContactList
           contacts={cvData.contacts}
           contactChange={contactChange}
         />
