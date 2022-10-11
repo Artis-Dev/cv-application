@@ -4,7 +4,7 @@ function Experience(props) {
   const { experience } = props;
   return (
     <div className="mb-4">
-      <p className="mb-1 text-xl font-bold uppercase">Expierence</p>
+      <p className="mb-1 text-xl font-bold uppercase">Experience</p>
       <div>
         {experience.map((job) => {
           return (
