@@ -7,6 +7,7 @@ import EditHeading from './edit/EditHeading';
 import About from './preview/About';
 import EditAbout from './edit/EditAbout';
 import Skills from './preview/Skills';
+import EditSkills from './edit/EditSkills';
 import Experience from './preview/Experience';
 import Education from './preview/Education';
 
@@ -21,8 +22,8 @@ function Cv(props) {
         />
         <EditHeading heading={cvData.heading} handleChange={handleChange} />
         <EditAbout about={cvData.about} handleChange={handleChange} />
-        {/* <EditSkills skillsets={cvData.skillsets} />
-        <EditExperience experience={cvData.experience} />
+        <EditSkills skillsets={cvData.skillsets} handleChange={handleChange} />
+        {/* <EditExperience experience={cvData.experience} />
         <EditEducation education={cvData.education} /> */}
       </div>
     );

@@ -92,9 +92,35 @@ class Builder extends React.Component {
           ...prevState.cvData.about,
           [e.target.getAttribute('data-key')]: e.target.value,
         },
+        skillsets: prevState.cvData.skillsets.map((skillset) => {
+          if (skillset.id === e.target.parentElement.getAttribute('data-key')) {
+            return {
+              ...skillset,
+              title: e.target.value,
+            };
+          }
+          return skillset;
+        }),
       },
     }));
   };
+
+  // handleSkillsChange = (e) => {
+  //   this.setState(
+  //     {
+  // tasks: this.state.tasks.map((task) => {
+  //   // if task's id is the same as the paragraph's data-key attribute...
+  // if (task.id === e.target.parentElement.getAttribute('data-key')) {
+  //   return {
+  //     title: e.target.value, // then return such text which was on the clicked button paragraph
+  //   };
+  // }
+  //   return task;
+  // }),
+  //     },
+  //     () => console.log(e.target.value)
+  //   );
+  // };
 
   render() {
     const { cvData, editMode } = this.state;
