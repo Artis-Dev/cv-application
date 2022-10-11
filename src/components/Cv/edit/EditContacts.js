@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
-function EditableContacts(props) {
-  const { contacts } = props;
+function EditContacts(props) {
+  const { contacts, contactChange } = props;
 
   return (
     <div className="mb-4 flex gap-x-8 text-sm">
@@ -9,6 +9,8 @@ function EditableContacts(props) {
         <div className="mb-1">
           <span className="font-bold">Mail: </span>
           <input
+            data-value="mail"
+            onChange={contactChange}
             type="text"
             className="font-normal"
             defaultValue={contacts.mail}
@@ -17,6 +19,8 @@ function EditableContacts(props) {
         <div className="mb-1">
           <span className="font-bold">Phone: </span>
           <input
+            data-value="phone"
+            onChange={contactChange}
             type="text"
             className="font-normal"
             defaultValue={contacts.phone}
@@ -27,6 +31,8 @@ function EditableContacts(props) {
         <div className="mb-1">
           <span className="font-bold">LinkedIn: </span>
           <input
+            data-value="linkedin"
+            onChange={contactChange}
             type="text"
             className="font-normal"
             defaultValue={contacts.linkedin}
@@ -35,6 +41,8 @@ function EditableContacts(props) {
         <div className="mb-1">
           <span className="font-bold">GitHub: </span>
           <input
+            data-value="github"
+            onChange={contactChange}
             type="text"
             className="font-normal"
             defaultValue={contacts.github}
@@ -45,7 +53,8 @@ function EditableContacts(props) {
   );
 }
 
-EditableContacts.propTypes = {
+EditContacts.propTypes = {
+  contactChange: PropTypes.func.isRequired,
   contacts: PropTypes.shape({
     mail: PropTypes.string,
     phone: PropTypes.string,
@@ -54,4 +63,4 @@ EditableContacts.propTypes = {
   }).isRequired,
 };
 
-export default EditableContacts;
+export default EditContacts;

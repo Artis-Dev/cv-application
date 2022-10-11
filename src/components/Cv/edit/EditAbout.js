@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-function EditableAbout(props) {
+function EditAbout(props) {
   const { about } = props;
 
   return (
@@ -11,10 +11,10 @@ function EditableAbout(props) {
   );
 }
 
-EditableAbout.propTypes = {
+EditAbout.propTypes = {
   about: PropTypes.shape({
     summary: PropTypes.string,
   }).isRequired,
 };
 
-export default EditableAbout;
+export default EditAbout;

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-function EditableHeading(props) {
+function EditHeading(props) {
   const { heading } = props;
 
   return (
@@ -14,11 +14,11 @@ function EditableHeading(props) {
   );
 }
 
-EditableHeading.propTypes = {
+EditHeading.propTypes = {
   heading: PropTypes.shape({
     fullName: PropTypes.string,
     title: PropTypes.string,
   }).isRequired,
 };
 
-export default EditableHeading;
+export default EditHeading;
