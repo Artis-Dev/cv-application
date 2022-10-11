@@ -12,17 +12,17 @@ class Builder extends React.Component {
       editMode: true,
       cvData: {
         contacts: {
-          mail: 'my@email.com',
-          phone: '123456789',
+          mail: 'Enter your mail',
+          phone: 'Enter your number',
           linkedin: '/in/username',
           github: '/username',
         },
         heading: {
-          fullName: 'Name Surname',
-          title: 'Title',
+          fullName: 'Enter full name',
+          title: 'Enter title',
         },
         about: {
-          summary: 'info info info info info info info',
+          summary: 'About you...',
         },
         skillsets: [
           {
@@ -76,13 +76,21 @@ class Builder extends React.Component {
     }));
   };
 
-  contactChange = (e) => {
+  handleChange = (e) => {
     this.setState((prevState) => ({
       cvData: {
         ...prevState.cvData,
         contacts: {
           ...prevState.cvData.contacts,
-          [e.target.getAttribute('data-value')]: e.target.value,
+          [e.target.getAttribute('data-key')]: e.target.value,
+        },
+        heading: {
+          ...prevState.cvData.heading,
+          [e.target.getAttribute('data-key')]: e.target.value,
+        },
+        about: {
+          ...prevState.cvData.about,
+          [e.target.getAttribute('data-key')]: e.target.value,
         },
       },
     }));
@@ -90,7 +98,7 @@ class Builder extends React.Component {
 
   render() {
     const { cvData, editMode } = this.state;
-    const { toggleMode, contactChange } = this;
+    const { toggleMode, handleChange } = this;
 
     return (
       <main className="flex grow flex-col py-8 px-4">
@@ -101,7 +109,7 @@ class Builder extends React.Component {
             size="big"
           />
         </div>
-        <Cv cvData={cvData} editMode={editMode} contactChange={contactChange} />
+        <Cv cvData={cvData} editMode={editMode} handleChange={handleChange} />
       </main>
     );
   }

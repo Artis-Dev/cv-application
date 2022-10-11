@@ -11,16 +11,16 @@ import Experience from './preview/Experience';
 import Education from './preview/Education';
 
 function Cv(props) {
-  const { cvData, editMode, contactChange } = props;
+  const { cvData, editMode, handleChange } = props;
   if (editMode) {
     return (
       <div className="container mx-auto my-8 max-w-3xl bg-white py-8 px-16">
         <EditContactList
           contacts={cvData.contacts}
-          contactChange={contactChange}
+          handleChange={handleChange}
         />
-        <EditHeading heading={cvData.heading} />
-        <EditAbout about={cvData.about} />
+        <EditHeading heading={cvData.heading} handleChange={handleChange} />
+        <EditAbout about={cvData.about} handleChange={handleChange} />
         {/* <EditSkills skillsets={cvData.skillsets} />
         <EditExperience experience={cvData.experience} />
         <EditEducation education={cvData.education} /> */}
@@ -41,7 +41,7 @@ function Cv(props) {
 
 Cv.propTypes = {
   editMode: PropTypes.bool.isRequired,
-  contactChange: PropTypes.func.isRequired,
+  handleChange: PropTypes.func.isRequired,
   cvData: PropTypes.shape({
     contacts: PropTypes.shape({}),
     heading: PropTypes.shape({}),
