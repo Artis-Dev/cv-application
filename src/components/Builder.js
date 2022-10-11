@@ -1,8 +1,8 @@
 import React from 'react';
 import uniqid from 'uniqid';
 
-import Button from './Button';
-import Cv from './Cv';
+import Button from './UI/Button';
+import Cv from './Cv/Cv';
 
 class Builder extends React.Component {
   constructor(props) {
@@ -76,16 +76,32 @@ class Builder extends React.Component {
     }));
   };
 
+  contactChange = (e) => {
+    this.setState((prevState) => ({
+      cvData: {
+        ...prevState.cvData,
+        contacts: {
+          ...prevState.cvData.contacts,
+          [e.target.getAttribute('data-value')]: e.target.value,
+        },
+      },
+    }));
+  };
+
   render() {
     const { cvData, editMode } = this.state;
-    const { toggleMode } = this;
+    const { toggleMode, contactChange } = this;
 
     return (
       <main className="flex grow flex-col py-8 px-4">
         <div className="flex justify-center gap-8">
-          <Button toggleMode={toggleMode} editMode={editMode} />
+          <Button
+            clickEvent={toggleMode}
+            value={editMode ? 'Preview mode' : 'Edit mode'}
+            size="big"
+          />
         </div>
-        <Cv cvData={cvData} editMode={editMode} />
+        <Cv cvData={cvData} editMode={editMode} contactChange={contactChange} />
       </main>
     );
   }
