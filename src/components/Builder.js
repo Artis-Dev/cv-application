@@ -1,8 +1,8 @@
 import React from 'react';
 import uniqid from 'uniqid';
 
-import Button from './UI/Button';
-import Cv from './Cv/Cv';
+import Button from './ui/Button';
+import Cv from './cv/Cv';
 
 class Builder extends React.Component {
   constructor(props) {
