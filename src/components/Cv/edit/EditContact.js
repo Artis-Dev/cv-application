@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-function Contact(props) {
+function EditContact(props) {
   const { title, value, handleChange } = props;
 
   return (
@@ -17,10 +17,10 @@ function Contact(props) {
   );
 }
 
-Contact.propTypes = {
+EditContact.propTypes = {
   title: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
 };
 
-export default Contact;
+export default EditContact;

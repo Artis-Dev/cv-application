@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 import EditContact from './EditContact';
 
-function EditContacts(props) {
+function EditContactList(props) {
   const { contacts, handleChange } = props;
 
   return (
@@ -35,7 +35,7 @@ function EditContacts(props) {
   );
 }
 
-EditContacts.propTypes = {
+EditContactList.propTypes = {
   handleChange: PropTypes.func.isRequired,
   contacts: PropTypes.shape({
     mail: PropTypes.string,
@@ -45,4 +45,4 @@ EditContacts.propTypes = {
   }).isRequired,
 };
 
-export default EditContacts;
+export default EditContactList;
