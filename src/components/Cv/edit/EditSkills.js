@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Button from '../../UI/Button';
 
 function EditSkills(props) {
-  const { skillsets, handleChange } = props;
+  const { skillsets, handleSkillsetChange, handleSkillChange } = props;
 
   return (
     <div className="mb-4">
@@ -17,15 +17,23 @@ function EditSkills(props) {
                 <input
                   className="ml-2 mb-1"
                   defaultValue={skillset.title}
-                  onChange={handleChange}
+                  onChange={handleSkillsetChange}
                 />
               </div>
               <div className="ml-7 font-normal">
                 {skillset.skills.map((skill) => {
                   return (
-                    <p key={skill}>
+                    <p
+                      key={skill.id}
+                      data-skillset={skillset.id}
+                      data-skill={skill.id}
+                    >
                       <Button value="remove" size="small" />
-                      <input className="ml-2 mb-1" defaultValue={skill} />
+                      <input
+                        className="ml-2 mb-1"
+                        defaultValue={skill.title}
+                        onChange={handleSkillChange}
+                      />
                     </p>
                   );
                 })}
@@ -41,7 +49,8 @@ function EditSkills(props) {
 }
 
 EditSkills.propTypes = {
-  handleChange: PropTypes.func.isRequired,
+  handleSkillsetChange: PropTypes.func.isRequired,
+  handleSkillChange: PropTypes.func.isRequired,
   skillsets: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 

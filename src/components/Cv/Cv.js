@@ -12,17 +12,33 @@ import Experience from './preview/Experience';
 import Education from './preview/Education';
 
 function Cv(props) {
-  const { cvData, editMode, handleChange } = props;
+  const {
+    cvData,
+    editMode,
+    handleContactChange,
+    handleHeadingChange,
+    handleAboutChange,
+    handleSkillsetChange,
+    handleSkillChange,
+  } = props;
+
   if (editMode) {
     return (
       <div className="container mx-auto my-8 max-w-3xl bg-white py-8 px-16">
         <EditContactList
           contacts={cvData.contacts}
-          handleChange={handleChange}
+          handleChange={handleContactChange}
         />
-        <EditHeading heading={cvData.heading} handleChange={handleChange} />
-        <EditAbout about={cvData.about} handleChange={handleChange} />
-        <EditSkills skillsets={cvData.skillsets} handleChange={handleChange} />
+        <EditHeading
+          heading={cvData.heading}
+          handleChange={handleHeadingChange}
+        />
+        <EditAbout about={cvData.about} handleChange={handleAboutChange} />
+        <EditSkills
+          skillsets={cvData.skillsets}
+          handleSkillsetChange={handleSkillsetChange}
+          handleSkillChange={handleSkillChange}
+        />
         {/* <EditExperience experience={cvData.experience} />
         <EditEducation education={cvData.education} /> */}
       </div>
@@ -42,7 +58,11 @@ function Cv(props) {
 
 Cv.propTypes = {
   editMode: PropTypes.bool.isRequired,
-  handleChange: PropTypes.func.isRequired,
+  handleContactChange: PropTypes.func.isRequired,
+  handleHeadingChange: PropTypes.func.isRequired,
+  handleAboutChange: PropTypes.func.isRequired,
+  handleSkillsetChange: PropTypes.func.isRequired,
+  handleSkillChange: PropTypes.func.isRequired,
   cvData: PropTypes.shape({
     contacts: PropTypes.shape({}),
     heading: PropTypes.shape({}),

@@ -26,24 +26,40 @@ class Builder extends React.Component {
         },
         skillsets: [
           {
+            id: uniqid(),
             title: 'Technical languages',
-            skills: ['JavaScript', 'CSS', 'HTML'],
-            id: uniqid(),
+            skills: [
+              {
+                title: 'JavaScript',
+                id: uniqid(),
+              },
+              {
+                title: 'CSS',
+                id: uniqid(),
+              },
+              {
+                title: 'HTML',
+                id: uniqid(),
+              },
+            ],
           },
           {
+            id: uniqid(),
             title: 'Tools & Software',
-            skills: ['Git', 'GitHub', 'VSCode'],
-            id: uniqid(),
-          },
-          {
-            title: 'Additional',
-            skills: ['Adobe Photoshop', 'Trello'],
-            id: uniqid(),
-          },
-          {
-            title: 'Languages',
-            skills: ['English'],
-            id: uniqid(),
+            skills: [
+              {
+                title: 'Git',
+                id: uniqid(),
+              },
+              {
+                title: 'GitHub',
+                id: uniqid(),
+              },
+              {
+                title: 'VSCode',
+                id: uniqid(),
+              },
+            ],
           },
         ],
         experience: [
@@ -76,7 +92,7 @@ class Builder extends React.Component {
     }));
   };
 
-  handleChange = (e) => {
+  handleContactChange = (e) => {
     this.setState((prevState) => ({
       cvData: {
         ...prevState.cvData,
@@ -84,14 +100,38 @@ class Builder extends React.Component {
           ...prevState.cvData.contacts,
           [e.target.getAttribute('data-key')]: e.target.value,
         },
+      },
+    }));
+  };
+
+  handleHeadingChange = (e) => {
+    this.setState((prevState) => ({
+      cvData: {
+        ...prevState.cvData,
         heading: {
           ...prevState.cvData.heading,
           [e.target.getAttribute('data-key')]: e.target.value,
         },
+      },
+    }));
+  };
+
+  handleAboutChange = (e) => {
+    this.setState((prevState) => ({
+      cvData: {
+        ...prevState.cvData,
         about: {
           ...prevState.cvData.about,
           [e.target.getAttribute('data-key')]: e.target.value,
         },
+      },
+    }));
+  };
+
+  handleSkillsetChange = (e) => {
+    this.setState((prevState) => ({
+      cvData: {
+        ...prevState.cvData,
         skillsets: prevState.cvData.skillsets.map((skillset) => {
           if (skillset.id === e.target.parentElement.getAttribute('data-key')) {
             return {
@@ -105,26 +145,45 @@ class Builder extends React.Component {
     }));
   };
 
-  // handleSkillsChange = (e) => {
-  //   this.setState(
-  //     {
-  // tasks: this.state.tasks.map((task) => {
-  //   // if task's id is the same as the paragraph's data-key attribute...
-  // if (task.id === e.target.parentElement.getAttribute('data-key')) {
-  //   return {
-  //     title: e.target.value, // then return such text which was on the clicked button paragraph
-  //   };
-  // }
-  //   return task;
-  // }),
-  //     },
-  //     () => console.log(e.target.value)
-  //   );
-  // };
+  handleSkillChange = (e) => {
+    this.setState((prevState) => ({
+      cvData: {
+        ...prevState.cvData,
+        skillsets: prevState.cvData.skillsets.map((skillset) => {
+          if (
+            skillset.id === e.target.parentElement.getAttribute('data-skillset')
+          ) {
+            return {
+              ...skillset,
+              skills: skillset.skills.map((skill) => {
+                if (
+                  skill.id === e.target.parentElement.getAttribute('data-skill')
+                ) {
+                  return {
+                    ...skill,
+                    title: e.target.value,
+                  };
+                }
+                return skill;
+              }),
+            };
+          }
+          return skillset;
+        }),
+      },
+    }));
+  };
 
   render() {
     const { cvData, editMode } = this.state;
-    const { toggleMode, handleChange } = this;
+    const {
+      toggleMode,
+      handleContactChange,
+      handleHeadingChange,
+      handleAboutChange,
+      handleSkillsetChange,
+      handleSkillChange,
+    } = this;
 
     return (
       <main className="flex grow flex-col py-8 px-4">
@@ -135,7 +194,15 @@ class Builder extends React.Component {
             size="big"
           />
         </div>
-        <Cv cvData={cvData} editMode={editMode} handleChange={handleChange} />
+        <Cv
+          cvData={cvData}
+          editMode={editMode}
+          handleContactChange={handleContactChange}
+          handleHeadingChange={handleHeadingChange}
+          handleAboutChange={handleAboutChange}
+          handleSkillsetChange={handleSkillsetChange}
+          handleSkillChange={handleSkillChange}
+        />
       </main>
     );
   }
