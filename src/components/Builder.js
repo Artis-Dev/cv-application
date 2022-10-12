@@ -11,18 +11,14 @@ class Builder extends React.Component {
     this.state = {
       editMode: true,
       cvData: {
-        contacts: {
+        personal: {
+          fullName: 'Enter full name',
+          title: 'Enter title',
+          summary: 'About you...',
           mail: 'Enter your mail',
           phone: 'Enter your number',
           linkedin: '/in/username',
           github: '/username',
-        },
-        heading: {
-          fullName: 'Enter full name',
-          title: 'Enter title',
-        },
-        about: {
-          summary: 'About you...',
         },
         skillsets: [
           {
@@ -92,41 +88,41 @@ class Builder extends React.Component {
     }));
   };
 
-  handleContactChange = (e) => {
+  handlePersonalChange = (e) => {
     this.setState((prevState) => ({
       cvData: {
         ...prevState.cvData,
-        contacts: {
-          ...prevState.cvData.contacts,
+        personal: {
+          ...prevState.cvData.personal,
           [e.target.getAttribute('data-key')]: e.target.value,
         },
       },
     }));
   };
 
-  handleHeadingChange = (e) => {
-    this.setState((prevState) => ({
-      cvData: {
-        ...prevState.cvData,
-        heading: {
-          ...prevState.cvData.heading,
-          [e.target.getAttribute('data-key')]: e.target.value,
-        },
-      },
-    }));
-  };
+  // handleHeadingChange = (e) => {
+  //   this.setState((prevState) => ({
+  //     cvData: {
+  //       ...prevState.cvData,
+  //       heading: {
+  //         ...prevState.cvData.heading,
+  //         [e.target.getAttribute('data-key')]: e.target.value,
+  //       },
+  //     },
+  //   }));
+  // };
 
-  handleAboutChange = (e) => {
-    this.setState((prevState) => ({
-      cvData: {
-        ...prevState.cvData,
-        about: {
-          ...prevState.cvData.about,
-          [e.target.getAttribute('data-key')]: e.target.value,
-        },
-      },
-    }));
-  };
+  // handleAboutChange = (e) => {
+  //   this.setState((prevState) => ({
+  //     cvData: {
+  //       ...prevState.cvData,
+  //       about: {
+  //         ...prevState.cvData.about,
+  //         [e.target.getAttribute('data-key')]: e.target.value,
+  //       },
+  //     },
+  //   }));
+  // };
 
   handleSkillsetChange = (e) => {
     this.setState((prevState) => ({
@@ -178,9 +174,7 @@ class Builder extends React.Component {
     const { cvData, editMode } = this.state;
     const {
       toggleMode,
-      handleContactChange,
-      handleHeadingChange,
-      handleAboutChange,
+      handlePersonalChange,
       handleSkillsetChange,
       handleSkillChange,
     } = this;
@@ -197,9 +191,7 @@ class Builder extends React.Component {
         <Cv
           cvData={cvData}
           editMode={editMode}
-          handleContactChange={handleContactChange}
-          handleHeadingChange={handleHeadingChange}
-          handleAboutChange={handleAboutChange}
+          handlePersonalChange={handlePersonalChange}
           handleSkillsetChange={handleSkillsetChange}
           handleSkillChange={handleSkillChange}
         />

@@ -3,31 +3,31 @@ import PropTypes from 'prop-types';
 import EditContact from './EditContact';
 
 function EditContactList(props) {
-  const { contacts, handleChange } = props;
+  const { personalData, handleChange } = props;
 
   return (
     <div className="mb-4 flex gap-x-8 text-sm">
       <div className="w-1/2">
         <EditContact
           title="Mail"
-          value={contacts.mail}
+          value={personalData.mail}
           handleChange={handleChange}
         />
         <EditContact
           title="Phone"
-          value={contacts.phone}
+          value={personalData.phone}
           handleChange={handleChange}
         />
       </div>
       <div className="w-1/2">
         <EditContact
           title="LinkedIn"
-          value={contacts.linkedin}
+          value={personalData.linkedin}
           handleChange={handleChange}
         />
         <EditContact
           title="GitHub"
-          value={contacts.github}
+          value={personalData.github}
           handleChange={handleChange}
         />
       </div>
@@ -37,7 +37,7 @@ function EditContactList(props) {
 
 EditContactList.propTypes = {
   handleChange: PropTypes.func.isRequired,
-  contacts: PropTypes.shape({
+  personalData: PropTypes.shape({
     mail: PropTypes.string,
     phone: PropTypes.string,
     linkedin: PropTypes.string,

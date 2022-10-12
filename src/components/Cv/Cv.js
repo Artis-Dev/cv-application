@@ -15,9 +15,7 @@ function Cv(props) {
   const {
     cvData,
     editMode,
-    handleContactChange,
-    handleHeadingChange,
-    handleAboutChange,
+    handlePersonalChange,
     handleSkillsetChange,
     handleSkillChange,
   } = props;
@@ -26,14 +24,17 @@ function Cv(props) {
     return (
       <div className="container mx-auto my-8 max-w-3xl bg-white py-8 px-16">
         <EditContactList
-          contacts={cvData.contacts}
-          handleChange={handleContactChange}
+          personalData={cvData.personal}
+          handleChange={handlePersonalChange}
         />
         <EditHeading
-          heading={cvData.heading}
-          handleChange={handleHeadingChange}
+          personalData={cvData.personal}
+          handleChange={handlePersonalChange}
         />
-        <EditAbout about={cvData.about} handleChange={handleAboutChange} />
+        <EditAbout
+          personalData={cvData.personal}
+          handleChange={handlePersonalChange}
+        />
         <EditSkills
           skillsets={cvData.skillsets}
           handleSkillsetChange={handleSkillsetChange}
@@ -46,9 +47,9 @@ function Cv(props) {
   }
   return (
     <div className="container mx-auto my-8 max-w-3xl bg-white py-8 px-16">
-      <ContactList contacts={cvData.contacts} />
-      <Heading heading={cvData.heading} />
-      <About about={cvData.about} />
+      <ContactList personalData={cvData.personal} />
+      <Heading personalData={cvData.personal} />
+      <About personalData={cvData.personal} />
       <Skills skillsets={cvData.skillsets} />
       <Experience experience={cvData.experience} />
       <Education education={cvData.education} />
@@ -58,15 +59,11 @@ function Cv(props) {
 
 Cv.propTypes = {
   editMode: PropTypes.bool.isRequired,
-  handleContactChange: PropTypes.func.isRequired,
-  handleHeadingChange: PropTypes.func.isRequired,
-  handleAboutChange: PropTypes.func.isRequired,
+  handlePersonalChange: PropTypes.func.isRequired,
   handleSkillsetChange: PropTypes.func.isRequired,
   handleSkillChange: PropTypes.func.isRequired,
   cvData: PropTypes.shape({
-    contacts: PropTypes.shape({}),
-    heading: PropTypes.shape({}),
-    about: PropTypes.shape({}),
+    personal: PropTypes.shape({}),
     skillsets: PropTypes.arrayOf(PropTypes.shape({})),
     experience: PropTypes.arrayOf(PropTypes.shape({})),
     education: PropTypes.arrayOf(PropTypes.shape({})),

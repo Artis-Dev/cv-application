@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 function EditAbout(props) {
-  const { about, handleChange } = props;
+  const { personalData, handleChange } = props;
 
   return (
     <div className="mb-4">
@@ -9,7 +9,7 @@ function EditAbout(props) {
       <textarea
         data-key="summary"
         className="w-full"
-        defaultValue={about.summary}
+        defaultValue={personalData.summary}
         onChange={handleChange}
       />
     </div>
@@ -18,7 +18,7 @@ function EditAbout(props) {
 
 EditAbout.propTypes = {
   handleChange: PropTypes.func.isRequired,
-  about: PropTypes.shape({
+  personalData: PropTypes.shape({
     summary: PropTypes.string,
   }).isRequired,
 };
