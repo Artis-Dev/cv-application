@@ -166,6 +166,31 @@ class Builder extends React.Component {
     }));
   };
 
+  handleSkillDelete = (e) => {
+    this.setState((prevState) => ({
+      cvData: {
+        ...prevState.cvData,
+        skillsets: prevState.cvData.skillsets.map((skillset) => {
+          if (
+            skillset.id ===
+            e.target.parentElement.getAttribute('data-skillset-id')
+          ) {
+            return {
+              ...skillset,
+              skills: skillset.skills.filter((skill) => {
+                return (
+                  skill.id !==
+                  e.target.parentElement.getAttribute('data-skill-id')
+                );
+              }),
+            };
+          }
+          return skillset;
+        }),
+      },
+    }));
+  };
+
   render() {
     const { cvData, editMode } = this.state;
     const {
@@ -174,6 +199,7 @@ class Builder extends React.Component {
       handleSkillsetChange,
       handleSkillChange,
       handleSkillsetDelete,
+      handleSkillDelete,
     } = this;
 
     return (
@@ -192,6 +218,7 @@ class Builder extends React.Component {
           handleSkillsetChange={handleSkillsetChange}
           handleSkillChange={handleSkillChange}
           handleSkillsetDelete={handleSkillsetDelete}
+          handleSkillDelete={handleSkillDelete}
         />
       </main>
     );

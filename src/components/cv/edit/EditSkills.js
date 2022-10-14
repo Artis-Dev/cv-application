@@ -11,6 +11,7 @@ function EditSkills(props) {
     handleSkillsetChange,
     handleSkillChange,
     handleSkillsetDelete,
+    handleSkillDelete,
   } = props;
 
   return (
@@ -51,7 +52,11 @@ function EditSkills(props) {
                         handleChange={handleSkillChange}
                         value={skill.title}
                       />
-                      <Button value="remove" size="small" />
+                      <Button
+                        value="remove"
+                        size="small"
+                        handleClick={handleSkillDelete}
+                      />
                     </div>
                   );
                 })}
@@ -70,6 +75,7 @@ EditSkills.propTypes = {
   handleSkillsetChange: PropTypes.func.isRequired,
   handleSkillChange: PropTypes.func.isRequired,
   handleSkillsetDelete: PropTypes.func.isRequired,
+  handleSkillDelete: PropTypes.func.isRequired,
   skillsetsData: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 
