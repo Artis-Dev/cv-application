@@ -11,14 +11,14 @@ function Preview(props) {
   const { cvData } = props;
 
   return (
-    <div>
+    <>
       <ContactList personalData={cvData.personal} />
       <Heading personalData={cvData.personal} />
       <About personalData={cvData.personal} />
       <Skills skillsets={cvData.skillsets} />
       <Experience experience={cvData.experience} />
       <Education education={cvData.education} />
-    </div>
+    </>
   );
 }
 
