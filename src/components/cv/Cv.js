@@ -8,16 +8,20 @@ function Cv(props) {
     cvData,
     editMode,
     handlePersonalChange,
-    // handleSkillsetChange,
-    // handleSkillChange,
+    handleSkillsetChange,
+    handleSkillChange,
+    handleSkillsetDelete,
   } = props;
 
   return (
     <div className="container mx-auto my-8 max-w-3xl bg-white py-8 px-16">
       {editMode ? (
         <EditView
-          personalData={cvData.personal}
-          handleChange={handlePersonalChange}
+          cvData={cvData}
+          handlePersonalChange={handlePersonalChange}
+          handleSkillsetChange={handleSkillsetChange}
+          handleSkillChange={handleSkillChange}
+          handleSkillsetDelete={handleSkillsetDelete}
         />
       ) : (
         <Preview cvData={cvData} />
@@ -29,8 +33,9 @@ function Cv(props) {
 Cv.propTypes = {
   editMode: PropTypes.bool.isRequired,
   handlePersonalChange: PropTypes.func.isRequired,
-  // handleSkillsetChange: PropTypes.func.isRequired,
-  // handleSkillChange: PropTypes.func.isRequired,
+  handleSkillsetChange: PropTypes.func.isRequired,
+  handleSkillChange: PropTypes.func.isRequired,
+  handleSkillsetDelete: PropTypes.func.isRequired,
   cvData: PropTypes.shape({
     personal: PropTypes.shape({}),
     skillsets: PropTypes.arrayOf(PropTypes.shape({})),

@@ -106,7 +106,10 @@ class Builder extends React.Component {
       cvData: {
         ...prevState.cvData,
         skillsets: prevState.cvData.skillsets.map((skillset) => {
-          if (skillset.id === e.target.parentElement.getAttribute('data-key')) {
+          if (
+            skillset.id ===
+            e.target.parentElement.getAttribute('data-skillset-id')
+          ) {
             return {
               ...skillset,
               title: e.target.value,
@@ -124,13 +127,15 @@ class Builder extends React.Component {
         ...prevState.cvData,
         skillsets: prevState.cvData.skillsets.map((skillset) => {
           if (
-            skillset.id === e.target.parentElement.getAttribute('data-skillset')
+            skillset.id ===
+            e.target.parentElement.getAttribute('data-skillset-id')
           ) {
             return {
               ...skillset,
               skills: skillset.skills.map((skill) => {
                 if (
-                  skill.id === e.target.parentElement.getAttribute('data-skill')
+                  skill.id ===
+                  e.target.parentElement.getAttribute('data-skill-id')
                 ) {
                   return {
                     ...skill,
@@ -147,6 +152,20 @@ class Builder extends React.Component {
     }));
   };
 
+  handleSkillsetDelete = (e) => {
+    this.setState((prevState) => ({
+      cvData: {
+        ...prevState.cvData,
+        skillsets: prevState.cvData.skillsets.filter((skillset) => {
+          return (
+            skillset.id !==
+            e.target.parentElement.getAttribute('data-skillset-id')
+          );
+        }),
+      },
+    }));
+  };
+
   render() {
     const { cvData, editMode } = this.state;
     const {
@@ -154,13 +173,14 @@ class Builder extends React.Component {
       handlePersonalChange,
       handleSkillsetChange,
       handleSkillChange,
+      handleSkillsetDelete,
     } = this;
 
     return (
       <main className="flex grow flex-col py-8 px-4">
         <div className="flex justify-center gap-8">
           <Button
-            clickEvent={toggleMode}
+            handleClick={toggleMode}
             value={editMode ? 'Preview mode' : 'Edit mode'}
             size="big"
           />
@@ -171,6 +191,7 @@ class Builder extends React.Component {
           handlePersonalChange={handlePersonalChange}
           handleSkillsetChange={handleSkillsetChange}
           handleSkillChange={handleSkillChange}
+          handleSkillsetDelete={handleSkillsetDelete}
         />
       </main>
     );
