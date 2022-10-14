@@ -12,13 +12,14 @@ class Builder extends React.Component {
       editMode: true,
       cvData: {
         personal: {
-          fullName: 'Enter full name',
-          title: 'Enter title',
-          summary: 'About you...',
-          mail: 'Enter your mail',
-          phone: 'Enter your number',
-          linkedin: '/in/username',
-          github: '/username',
+          firstName: '',
+          lastName: '',
+          title: '',
+          summary: '',
+          email: '',
+          phone: '',
+          linkedin: '',
+          github: '',
         },
         skillsets: [
           {
@@ -94,35 +95,11 @@ class Builder extends React.Component {
         ...prevState.cvData,
         personal: {
           ...prevState.cvData.personal,
-          [e.target.getAttribute('data-key')]: e.target.value,
+          [e.target.getAttribute('id')]: e.target.value,
         },
       },
     }));
   };
-
-  // handleHeadingChange = (e) => {
-  //   this.setState((prevState) => ({
-  //     cvData: {
-  //       ...prevState.cvData,
-  //       heading: {
-  //         ...prevState.cvData.heading,
-  //         [e.target.getAttribute('data-key')]: e.target.value,
-  //       },
-  //     },
-  //   }));
-  // };
-
-  // handleAboutChange = (e) => {
-  //   this.setState((prevState) => ({
-  //     cvData: {
-  //       ...prevState.cvData,
-  //       about: {
-  //         ...prevState.cvData.about,
-  //         [e.target.getAttribute('data-key')]: e.target.value,
-  //       },
-  //     },
-  //   }));
-  // };
 
   handleSkillsetChange = (e) => {
     this.setState((prevState) => ({
