@@ -4,8 +4,8 @@ function Heading(props) {
   const { personalData } = props;
 
   return (
-    <div className="mb-4 border-b-2 border-slate-900 pb-2">
-      <p className="text-4xl font-bold">{personalData.fullName}</p>
+    <div className="mb-4 border-b-2 border-slate-200 pb-2">
+      <p className="text-4xl font-bold">{`${personalData.firstName} ${personalData.lastName}`}</p>
       <p className="text-2xl font-bold">{personalData.title}</p>
     </div>
   );
@@ -13,7 +13,8 @@ function Heading(props) {
 
 Heading.propTypes = {
   personalData: PropTypes.shape({
-    fullName: PropTypes.string,
+    firstName: PropTypes.string,
+    lastName: PropTypes.string,
     title: PropTypes.string,
   }).isRequired,
 };

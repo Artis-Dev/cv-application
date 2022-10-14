@@ -8,7 +8,7 @@ function ContactList(props) {
   return (
     <div className="mb-4 flex gap-x-8 text-sm">
       <div className="w-1/2">
-        <Contact title="Mail" value={personalData.mail} />
+        <Contact title="Mail" value={personalData.email} />
         <Contact title="Phone" value={personalData.phone} />
       </div>
       <div className="w-1/2">
@@ -21,7 +21,7 @@ function ContactList(props) {
 
 ContactList.propTypes = {
   personalData: PropTypes.shape({
-    mail: PropTypes.string,
+    email: PropTypes.string,
     phone: PropTypes.string,
     linkedin: PropTypes.string,
     github: PropTypes.string,

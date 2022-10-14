@@ -5,7 +5,7 @@ function About(props) {
 
   return (
     <div className="mb-4">
-      <p className="mb-1 text-xl font-bold uppercase">About</p>
+      <p className="mb-1 font-lato text-xl font-bold uppercase">About</p>
       <p>{personalData.summary}</p>
     </div>
   );
