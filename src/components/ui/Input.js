@@ -17,7 +17,7 @@ function Input(props) {
 
 Input.propTypes = {
   handleChange: PropTypes.func.isRequired,
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
   placeholder: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   type: PropTypes.string,
@@ -25,6 +25,7 @@ Input.propTypes = {
 
 Input.defaultProps = {
   type: 'text',
+  id: '',
 };
 
 export default Input;
