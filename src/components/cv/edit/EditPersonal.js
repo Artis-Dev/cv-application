@@ -6,7 +6,7 @@ function EditPersonal(props) {
   const { personalData, handleChange } = props;
 
   return (
-    <div className="mb-8 border-b-2 border-slate-200">
+    <div className="mb-4 border-b-2 border-slate-200">
       <p className="mb-4 font-lato text-xl font-bold uppercase">
         Personal information
       </p>
