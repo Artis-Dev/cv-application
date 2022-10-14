@@ -4,25 +4,23 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 function Button(props) {
-  const { clickEvent, size, value } = props;
+  const { handleClick, size, value } = props;
 
   let buttonSize;
   let buttonValue = value;
 
   if (size === 'small') {
-    buttonSize = 'py-1 px-2 text-xs';
-  } else if (size === 'big') {
-    buttonSize = 'py-2 px-3';
+    buttonSize = 'text-xs';
   }
 
   if (value === 'remove') {
-    buttonValue = <FontAwesomeIcon icon={faTimes} />;
+    buttonValue = <FontAwesomeIcon icon={faTimes} pointerEvents="none" />;
   }
 
   return (
     <button
-      onClick={clickEvent}
-      className={`${buttonSize} rounded bg-slate-700 font-bold uppercase text-slate-100 duration-200 hover:bg-slate-600`}
+      onClick={handleClick}
+      className={`${buttonSize} rounded bg-slate-700 py-2 px-4 font-bold uppercase text-slate-100 duration-200 hover:bg-slate-600`}
       type="button"
     >
       {buttonValue}
@@ -31,9 +29,13 @@ function Button(props) {
 }
 
 Button.propTypes = {
-  clickEvent: PropTypes.func.isRequired,
+  handleClick: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired,
-  size: PropTypes.string.isRequired,
+  size: PropTypes.string,
+};
+
+Button.defaultProps = {
+  size: null,
 };
 
 export default Button;
