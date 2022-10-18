@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import EditPersonal from './EditPersonal';
 import EditSkills from './EditSkills';
 import EditExperience from './EditExperience';
+import EditEducation from './EditEducation';
 
 function EditView(props) {
   const {
@@ -16,6 +17,7 @@ function EditView(props) {
     handleExperienceChange,
     handleExperienceDelete,
     handleExperienceAdd,
+    handleEducationChange,
   } = props;
 
   return (
@@ -39,6 +41,12 @@ function EditView(props) {
         handleDelete={handleExperienceDelete}
         handleAdd={handleExperienceAdd}
       />
+      <EditEducation
+        educationData={cvData.education}
+        handleChange={handleEducationChange}
+        handleDelete={handleExperienceDelete}
+        handleAdd={handleExperienceAdd}
+      />
     </>
   );
 }
@@ -54,10 +62,12 @@ EditView.propTypes = {
   handleExperienceChange: PropTypes.func.isRequired,
   handleExperienceDelete: PropTypes.func.isRequired,
   handleExperienceAdd: PropTypes.func.isRequired,
+  handleEducationChange: PropTypes.func.isRequired,
   cvData: PropTypes.shape({
     personal: PropTypes.shape({}),
     skillsets: PropTypes.arrayOf(PropTypes.shape({})),
     experience: PropTypes.arrayOf(PropTypes.shape({})),
+    education: PropTypes.arrayOf(PropTypes.shape({})),
   }).isRequired,
 };
 

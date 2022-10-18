@@ -297,6 +297,25 @@ class Builder extends React.Component {
     }));
   };
 
+  handleEducationChange = (e) => {
+    this.setState((prevState) => ({
+      cvData: {
+        ...prevState.cvData,
+        education: prevState.cvData.education.map((school) => {
+          if (
+            school.id === e.target.parentElement.getAttribute('data-school-id')
+          ) {
+            return {
+              ...school,
+              [e.target.getAttribute('id')]: e.target.value,
+            };
+          }
+          return school;
+        }),
+      },
+    }));
+  };
+
   render() {
     const { cvData, editMode } = this.state;
     const {
@@ -311,6 +330,7 @@ class Builder extends React.Component {
       handleExperienceChange,
       handleExperienceDelete,
       handleExperienceAdd,
+      handleEducationChange,
     } = this;
 
     return (
@@ -334,6 +354,7 @@ class Builder extends React.Component {
           handleExperienceChange={handleExperienceChange}
           handleExperienceDelete={handleExperienceDelete}
           handleExperienceAdd={handleExperienceAdd}
+          handleEducationChange={handleEducationChange}
         />
       </main>
     );
