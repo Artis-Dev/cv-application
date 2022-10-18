@@ -238,6 +238,26 @@ class Builder extends React.Component {
     }));
   };
 
+  handleExperienceChange = (e) => {
+    this.setState((prevState) => ({
+      cvData: {
+        ...prevState.cvData,
+        experience: prevState.cvData.experience.map((position) => {
+          if (
+            position.id ===
+            e.target.parentElement.getAttribute('data-position-id')
+          ) {
+            return {
+              ...position,
+              [e.target.getAttribute('id')]: e.target.value,
+            };
+          }
+          return position;
+        }),
+      },
+    }));
+  };
+
   render() {
     const { cvData, editMode } = this.state;
     const {
@@ -249,6 +269,7 @@ class Builder extends React.Component {
       handleSkillDelete,
       handleSkillsetAdd,
       handleSkillAdd,
+      handleExperienceChange,
     } = this;
 
     return (
@@ -257,7 +278,6 @@ class Builder extends React.Component {
           <Button
             handleClick={toggleMode}
             value={editMode ? 'Preview mode' : 'Edit mode'}
-            size="big"
           />
         </div>
         <Cv
@@ -270,6 +290,7 @@ class Builder extends React.Component {
           handleSkillDelete={handleSkillDelete}
           handleSkillsetAdd={handleSkillsetAdd}
           handleSkillAdd={handleSkillAdd}
+          handleExperienceChange={handleExperienceChange}
         />
       </main>
     );
