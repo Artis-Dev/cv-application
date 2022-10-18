@@ -89,6 +89,14 @@ class Builder extends React.Component {
         title: '',
         id: uniqid(),
       },
+      position: {
+        position: '',
+        company: '',
+        from: '',
+        to: '',
+        description: '',
+        id: uniqid(),
+      },
     };
   }
 
@@ -272,6 +280,23 @@ class Builder extends React.Component {
     }));
   };
 
+  handleExperienceAdd = () => {
+    this.setState((prevState) => ({
+      cvData: {
+        ...prevState.cvData,
+        experience: prevState.cvData.experience.concat(prevState.position),
+      },
+      position: {
+        position: '',
+        company: '',
+        from: '',
+        to: '',
+        description: '',
+        id: uniqid(),
+      },
+    }));
+  };
+
   render() {
     const { cvData, editMode } = this.state;
     const {
@@ -285,6 +310,7 @@ class Builder extends React.Component {
       handleSkillAdd,
       handleExperienceChange,
       handleExperienceDelete,
+      handleExperienceAdd,
     } = this;
 
     return (
@@ -307,6 +333,7 @@ class Builder extends React.Component {
           handleSkillAdd={handleSkillAdd}
           handleExperienceChange={handleExperienceChange}
           handleExperienceDelete={handleExperienceDelete}
+          handleExperienceAdd={handleExperienceAdd}
         />
       </main>
     );

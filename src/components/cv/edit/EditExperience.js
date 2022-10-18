@@ -4,7 +4,7 @@ import Input from '../../ui/Input';
 import Button from '../../ui/Button';
 
 function EditExperience(props) {
-  const { experienceData, handleChange, handleDelete } = props;
+  const { experienceData, handleChange, handleDelete, handleAdd } = props;
 
   return (
     <div className="mb-4 border-b-2 border-slate-200 pb-4">
@@ -70,7 +70,7 @@ function EditExperience(props) {
             </div>
           );
         })}
-        <Button value="Add position" />
+        <Button value="Add position" handleClick={handleAdd} />
       </form>
     </div>
   );
@@ -79,6 +79,7 @@ function EditExperience(props) {
 EditExperience.propTypes = {
   handleChange: PropTypes.func.isRequired,
   handleDelete: PropTypes.func.isRequired,
+  handleAdd: PropTypes.func.isRequired,
   experienceData: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 

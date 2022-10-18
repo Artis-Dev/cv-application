@@ -15,6 +15,7 @@ function EditView(props) {
     handleSkillAdd,
     handleExperienceChange,
     handleExperienceDelete,
+    handleExperienceAdd,
   } = props;
 
   return (
@@ -36,6 +37,7 @@ function EditView(props) {
         experienceData={cvData.experience}
         handleChange={handleExperienceChange}
         handleDelete={handleExperienceDelete}
+        handleAdd={handleExperienceAdd}
       />
     </>
   );
@@ -51,6 +53,7 @@ EditView.propTypes = {
   handleSkillAdd: PropTypes.func.isRequired,
   handleExperienceChange: PropTypes.func.isRequired,
   handleExperienceDelete: PropTypes.func.isRequired,
+  handleExperienceAdd: PropTypes.func.isRequired,
   cvData: PropTypes.shape({
     personal: PropTypes.shape({}),
     skillsets: PropTypes.arrayOf(PropTypes.shape({})),

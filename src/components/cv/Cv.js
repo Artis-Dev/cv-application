@@ -16,6 +16,7 @@ function Cv(props) {
     handleSkillAdd,
     handleExperienceChange,
     handleExperienceDelete,
+    handleExperienceAdd,
   } = props;
 
   return (
@@ -32,6 +33,7 @@ function Cv(props) {
           handleSkillAdd={handleSkillAdd}
           handleExperienceChange={handleExperienceChange}
           handleExperienceDelete={handleExperienceDelete}
+          handleExperienceAdd={handleExperienceAdd}
         />
       ) : (
         <Preview cvData={cvData} />
@@ -51,6 +53,7 @@ Cv.propTypes = {
   handleSkillAdd: PropTypes.func.isRequired,
   handleExperienceChange: PropTypes.func.isRequired,
   handleExperienceDelete: PropTypes.func.isRequired,
+  handleExperienceAdd: PropTypes.func.isRequired,
   cvData: PropTypes.shape({
     personal: PropTypes.shape({}),
     skillsets: PropTypes.arrayOf(PropTypes.shape({})),
