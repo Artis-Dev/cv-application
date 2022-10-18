@@ -97,6 +97,14 @@ class Builder extends React.Component {
         description: '',
         id: uniqid(),
       },
+      school: {
+        field: '',
+        school: '',
+        from: '',
+        to: '',
+        description: '',
+        id: uniqid(),
+      },
     };
   }
 
@@ -316,6 +324,36 @@ class Builder extends React.Component {
     }));
   };
 
+  handleEducationDelete = (e) => {
+    this.setState((prevState) => ({
+      cvData: {
+        ...prevState.cvData,
+        education: prevState.cvData.education.filter((school) => {
+          return (
+            school.id !== e.target.parentElement.getAttribute('data-school-id')
+          );
+        }),
+      },
+    }));
+  };
+
+  handleEducationAdd = () => {
+    this.setState((prevState) => ({
+      cvData: {
+        ...prevState.cvData,
+        education: prevState.cvData.education.concat(prevState.school),
+      },
+      school: {
+        field: '',
+        school: '',
+        from: '',
+        to: '',
+        description: '',
+        id: uniqid(),
+      },
+    }));
+  };
+
   render() {
     const { cvData, editMode } = this.state;
     const {
@@ -331,6 +369,8 @@ class Builder extends React.Component {
       handleExperienceDelete,
       handleExperienceAdd,
       handleEducationChange,
+      handleEducationDelete,
+      handleEducationAdd,
     } = this;
 
     return (
@@ -355,6 +395,8 @@ class Builder extends React.Component {
           handleExperienceDelete={handleExperienceDelete}
           handleExperienceAdd={handleExperienceAdd}
           handleEducationChange={handleEducationChange}
+          handleEducationDelete={handleEducationDelete}
+          handleEducationAdd={handleEducationAdd}
         />
       </main>
     );

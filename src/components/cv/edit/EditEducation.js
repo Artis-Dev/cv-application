@@ -8,7 +8,7 @@ function EditEducation(props) {
 
   return (
     <div className="mb-4 border-b-2 border-slate-200 pb-4">
-      <p className="mb-4 font-lato text-xl font-bold uppercase">Experience</p>
+      <p className="mb-4 font-lato text-xl font-bold uppercase">Education</p>
       <form>
         {educationData.map((school) => {
           return (
