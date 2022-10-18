@@ -85,6 +85,10 @@ class Builder extends React.Component {
         title: '',
         skills: [],
       },
+      skill: {
+        title: '',
+        id: uniqid(),
+      },
     };
   }
 
@@ -210,6 +214,30 @@ class Builder extends React.Component {
     }));
   };
 
+  handleSkillAdd = (e) => {
+    this.setState((prevState) => ({
+      cvData: {
+        ...prevState.cvData,
+        skillsets: prevState.cvData.skillsets.map((skillset) => {
+          if (
+            skillset.id ===
+            e.target.parentElement.getAttribute('data-skillset-id')
+          ) {
+            return {
+              ...skillset,
+              skills: skillset.skills.concat(prevState.skill),
+            };
+          }
+          return skillset;
+        }),
+      },
+      skill: {
+        title: '',
+        id: uniqid(),
+      },
+    }));
+  };
+
   render() {
     const { cvData, editMode } = this.state;
     const {
@@ -220,6 +248,7 @@ class Builder extends React.Component {
       handleSkillsetDelete,
       handleSkillDelete,
       handleSkillsetAdd,
+      handleSkillAdd,
     } = this;
 
     return (
@@ -240,6 +269,7 @@ class Builder extends React.Component {
           handleSkillsetDelete={handleSkillsetDelete}
           handleSkillDelete={handleSkillDelete}
           handleSkillsetAdd={handleSkillsetAdd}
+          handleSkillAdd={handleSkillAdd}
         />
       </main>
     );

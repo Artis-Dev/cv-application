@@ -13,6 +13,7 @@ function EditSkills(props) {
     handleSkillsetDelete,
     handleSkillDelete,
     handleSkillsetAdd,
+    handleSkillAdd,
   } = props;
 
   return (
@@ -34,7 +35,7 @@ function EditSkills(props) {
                   handleClick={handleSkillsetDelete}
                 />
               </div>
-              <div className="pb-4 font-normal">
+              <div data-skillset-id={skillset.id} className="pb-4 font-normal">
                 {skillset.skills.map((skill) => {
                   return (
                     <div
@@ -61,7 +62,11 @@ function EditSkills(props) {
                     </div>
                   );
                 })}
-                <Button value="Add skill" size="small" />
+                <Button
+                  value="Add skill"
+                  size="small"
+                  handleClick={handleSkillAdd}
+                />
               </div>
             </div>
           );
@@ -78,6 +83,7 @@ EditSkills.propTypes = {
   handleSkillsetDelete: PropTypes.func.isRequired,
   handleSkillDelete: PropTypes.func.isRequired,
   handleSkillsetAdd: PropTypes.func.isRequired,
+  handleSkillAdd: PropTypes.func.isRequired,
   skillsetsData: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 
