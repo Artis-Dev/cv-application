@@ -2,6 +2,7 @@ import React from 'react';
 import uniqid from 'uniqid';
 
 import autofillData from '../utils/autofill';
+import resetData from '../utils/reset';
 import Button from './ui/Button';
 import Cv from './cv/Cv';
 
@@ -306,6 +307,12 @@ class Builder extends React.Component {
     }));
   };
 
+  handleReset = () => {
+    this.setState(() => ({
+      cvData: resetData,
+    }));
+  };
+
   render() {
     const { cvData, editMode } = this.state;
     const {
@@ -324,6 +331,7 @@ class Builder extends React.Component {
       handleEducationDelete,
       handleEducationAdd,
       handleAutofill,
+      handleReset,
     } = this;
 
     return (
@@ -334,7 +342,10 @@ class Builder extends React.Component {
             value={editMode ? 'Preview mode' : 'Edit mode'}
           />
           {editMode ? (
-            <Button handleClick={handleAutofill} value="Autofill" />
+            <>
+              <Button handleClick={handleAutofill} value="Autofill" />
+              <Button handleClick={handleReset} value="Reset" />
+            </>
           ) : null}
         </div>
         <Cv
