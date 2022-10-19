@@ -10,7 +10,7 @@ function Input(props) {
       id={id}
       placeholder={placeholder}
       onChange={handleChange}
-      defaultValue={value}
+      value={value}
     />
   );
 }

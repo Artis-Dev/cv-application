@@ -59,7 +59,7 @@ function EditExperience(props) {
                   id="description"
                   placeholder="Description"
                   onChange={handleChange}
-                  defaultValue={position.description}
+                  value={position.description}
                 />
               </div>
               <Button

@@ -55,7 +55,7 @@ function EditEducation(props) {
                   id="description"
                   placeholder="Description"
                   onChange={handleChange}
-                  defaultValue={school.description}
+                  value={school.description}
                 />
               </div>
               <Button

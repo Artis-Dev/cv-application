@@ -302,15 +302,15 @@ class Builder extends React.Component {
   };
 
   handleAutofill = () => {
-    this.setState(() => ({
+    this.setState({
       cvData: autofillData,
-    }));
+    });
   };
 
   handleReset = () => {
-    this.setState(() => ({
+    this.setState({
       cvData: resetData,
-    }));
+    });
   };
 
   render() {

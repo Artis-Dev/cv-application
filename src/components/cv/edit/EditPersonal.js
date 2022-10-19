@@ -80,7 +80,7 @@ function EditPersonal(props) {
             id="summary"
             placeholder="Write about yourself"
             onChange={handleChange}
-            defaultValue={personalData.summary}
+            value={personalData.summary}
           />
         </div>
       </form>
