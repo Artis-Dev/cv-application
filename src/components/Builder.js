@@ -1,6 +1,7 @@
 import React from 'react';
 import uniqid from 'uniqid';
 
+import autofillData from '../utils/autofill';
 import Button from './ui/Button';
 import Cv from './cv/Cv';
 
@@ -21,64 +22,9 @@ class Builder extends React.Component {
           linkedin: '',
           github: '',
         },
-        skillsets: [
-          {
-            id: uniqid(),
-            title: 'Technical languages',
-            skills: [
-              {
-                title: 'JavaScript',
-                id: uniqid(),
-              },
-              {
-                title: 'CSS',
-                id: uniqid(),
-              },
-              {
-                title: 'HTML',
-                id: uniqid(),
-              },
-            ],
-          },
-          {
-            id: uniqid(),
-            title: 'Tools & Software',
-            skills: [
-              {
-                title: 'Git',
-                id: uniqid(),
-              },
-              {
-                title: 'GitHub',
-                id: uniqid(),
-              },
-              {
-                title: 'VSCode',
-                id: uniqid(),
-              },
-            ],
-          },
-        ],
-        experience: [
-          {
-            position: 'Frontend Developer',
-            company: 'Google',
-            from: '2020',
-            to: '2022',
-            description: 'info info info',
-            id: uniqid(),
-          },
-        ],
-        education: [
-          {
-            field: 'Computer Science',
-            school: 'Harvard University',
-            from: '2016',
-            to: '2020',
-            description: 'info info info',
-            id: uniqid(),
-          },
-        ],
+        skillsets: [],
+        experience: [],
+        education: [],
       },
       skillset: {
         id: uniqid(),
@@ -354,6 +300,12 @@ class Builder extends React.Component {
     }));
   };
 
+  handleAutofill = () => {
+    this.setState(() => ({
+      cvData: autofillData,
+    }));
+  };
+
   render() {
     const { cvData, editMode } = this.state;
     const {
@@ -371,6 +323,7 @@ class Builder extends React.Component {
       handleEducationChange,
       handleEducationDelete,
       handleEducationAdd,
+      handleAutofill,
     } = this;
 
     return (
@@ -380,6 +333,9 @@ class Builder extends React.Component {
             handleClick={toggleMode}
             value={editMode ? 'Preview mode' : 'Edit mode'}
           />
+          {editMode ? (
+            <Button handleClick={handleAutofill} value="Autofill" />
+          ) : null}
         </div>
         <Cv
           cvData={cvData}
