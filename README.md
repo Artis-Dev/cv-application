@@ -26,10 +26,10 @@ Learning project from [The Odin Project](https://www.theodinproject.com/lessons/
 
 ### Features
 
-- Preview CV.
-- Edit CV.
-- Add or remove skills categories, skills, education and experience.
-- Responsive design.
+- Enter and edit form information
+- Add or remove skills categories, skills, education and experience
+- Preview formatted CV
+- Responsive design
 
 ### Built With
 
@@ -79,7 +79,11 @@ You will need `Node.js` and `npm` installed globally on your machine.
    npm install
    ```
 
-3. Build and deploy an app to gh-pages
+3. Build an app
+   ```sh
+   npm run build
+   ```
+4. Deploy an app to gh-pages
    ```sh
    npm run deploy
    ```
@@ -88,7 +92,7 @@ You will need `Node.js` and `npm` installed globally on your machine.
 
 ## Usage
 
-- You can use GitHub pages to view an app or start local server
+- Use [GitHub Pages](https://pages.github.com/) to view an app or start local server
 
   ```sh
   npm start
@@ -100,15 +104,10 @@ You will need `Node.js` and `npm` installed globally on your machine.
 
 ## Outcome
 
-- Used revealing module pattern for better code organizing.
-- Used public API to get data.
-- Used Webpack to build the app.
-- Used third-party library for date and time formating.
-- Used CSS3 grid and flex to create layout.
-- Used HTML5 semantic elements for better readability and structure.
+- Learned to work with React class components, state and props.
+- Used Tailwind CSS framework for styling.
+- Used Webpack to build an app.
 - Used Git and GitHub for project management.
-- Learned error handling a bit.
-- Tried to maintain clean code.
 - Cross tested on Firefox and Chromium based browsers.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
