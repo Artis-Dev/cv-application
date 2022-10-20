@@ -17,8 +17,8 @@ function EditExperience(props) {
               data-position-id={position.id}
               className="pb-4"
             >
-              <div className="grid grid-cols-2 gap-4">
-                <div className="mb-4" data-position-id={position.id}>
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                <div className="md:mb-4" data-position-id={position.id}>
                   <Input
                     id="position"
                     placeholder="Title"
@@ -35,8 +35,8 @@ function EditExperience(props) {
                   />
                 </div>
               </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="mb-4" data-position-id={position.id}>
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                <div className="md:mb-4" data-position-id={position.id}>
                   <Input
                     id="from"
                     placeholder="Start date"

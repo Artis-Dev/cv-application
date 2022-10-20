@@ -11,8 +11,8 @@ function EditPersonal(props) {
         Personal information
       </p>
       <form>
-        <div className="grid grid-cols-2 gap-4">
-          <div className="mb-4">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          <div className="md:mb-4">
             <Input
               id="firstName"
               placeholder="First name"
@@ -37,8 +37,8 @@ function EditPersonal(props) {
             value={personalData.title}
           />
         </div>
-        <div className="grid grid-cols-2 gap-4">
-          <div className="mb-4">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          <div className="md:mb-4">
             <Input
               id="email"
               placeholder="Email"
@@ -56,8 +56,8 @@ function EditPersonal(props) {
             />
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-4">
-          <div className="mb-4">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          <div className="md:mb-4">
             <Input
               id="linkedin"
               placeholder="LinkedIn username"

@@ -13,8 +13,8 @@ function EditEducation(props) {
         {educationData.map((school) => {
           return (
             <div key={school.id} data-school-id={school.id} className="pb-4">
-              <div className="grid grid-cols-2 gap-4">
-                <div className="mb-4" data-school-id={school.id}>
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                <div className="md:mb-4" data-school-id={school.id}>
                   <Input
                     id="field"
                     placeholder="Field"
@@ -31,8 +31,8 @@ function EditEducation(props) {
                   />
                 </div>
               </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="mb-4" data-school-id={school.id}>
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                <div className="md:mb-4" data-school-id={school.id}>
                   <Input
                     id="from"
                     placeholder="Start date"
