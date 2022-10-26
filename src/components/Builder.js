@@ -1,373 +1,301 @@
-import React from 'react';
+import { useState } from 'react';
 import uniqid from 'uniqid';
 
 import autofillData from '../utils/autofill';
-import resetData from '../utils/reset';
+import emptyData from '../utils/emptyCv';
 import Button from './ui/Button';
 import Cv from './cv/Cv';
 
-class Builder extends React.Component {
-  constructor(props) {
-    super(props);
+function Builder() {
+  const [editMode, setEditMode] = useState(true);
+  const [cvData, setCvData] = useState(emptyData);
+  const [skillset, setSkillset] = useState({
+    id: uniqid(),
+    title: '',
+    skills: [],
+  });
+  const [skill, setSkill] = useState({
+    title: '',
+    id: uniqid(),
+  });
+  const [position, setPosition] = useState({
+    position: '',
+    company: '',
+    from: '',
+    to: '',
+    description: '',
+    id: uniqid(),
+  });
+  const [school, setSchool] = useState({
+    field: '',
+    school: '',
+    from: '',
+    to: '',
+    description: '',
+    id: uniqid(),
+  });
 
-    this.state = {
-      editMode: true,
-      cvData: {
-        personal: {
-          firstName: '',
-          lastName: '',
-          title: '',
-          summary: '',
-          email: '',
-          phone: '',
-          linkedin: '',
-          github: '',
-        },
-        skillsets: [],
-        experience: [],
-        education: [],
-      },
-      skillset: {
-        id: uniqid(),
-        title: '',
-        skills: [],
-      },
-      skill: {
-        title: '',
-        id: uniqid(),
-      },
-      position: {
-        position: '',
-        company: '',
-        from: '',
-        to: '',
-        description: '',
-        id: uniqid(),
-      },
-      school: {
-        field: '',
-        school: '',
-        from: '',
-        to: '',
-        description: '',
-        id: uniqid(),
-      },
-    };
-  }
-
-  toggleMode = () => {
-    this.setState((prevState) => ({
-      editMode: !prevState.editMode,
-    }));
+  const toggleMode = () => {
+    setEditMode(!editMode);
   };
 
-  handlePersonalChange = (e) => {
-    this.setState((prevState) => ({
-      cvData: {
-        ...prevState.cvData,
-        personal: {
-          ...prevState.cvData.personal,
-          [e.target.getAttribute('id')]: e.target.value,
-        },
+  const handlePersonalChange = (e) => {
+    setCvData((prevState) => ({
+      ...prevState,
+      personal: {
+        ...prevState.personal,
+        [e.target.getAttribute('id')]: e.target.value,
       },
     }));
   };
 
-  handleSkillsetChange = (e) => {
-    this.setState((prevState) => ({
-      cvData: {
-        ...prevState.cvData,
-        skillsets: prevState.cvData.skillsets.map((skillset) => {
-          if (
-            skillset.id ===
-            e.target.parentElement.getAttribute('data-skillset-id')
-          ) {
-            return {
-              ...skillset,
-              title: e.target.value,
-            };
-          }
-          return skillset;
-        }),
-      },
+  const handleSkillsetAdd = () => {
+    setCvData((prevState) => ({
+      ...prevState,
+      skillsets: prevState.skillsets.concat(skillset),
     }));
-  };
-
-  handleSkillChange = (e) => {
-    this.setState((prevState) => ({
-      cvData: {
-        ...prevState.cvData,
-        skillsets: prevState.cvData.skillsets.map((skillset) => {
-          if (
-            skillset.id ===
-            e.target.parentElement.getAttribute('data-skillset-id')
-          ) {
-            return {
-              ...skillset,
-              skills: skillset.skills.map((skill) => {
-                if (
-                  skill.id ===
-                  e.target.parentElement.getAttribute('data-skill-id')
-                ) {
-                  return {
-                    ...skill,
-                    title: e.target.value,
-                  };
-                }
-                return skill;
-              }),
-            };
-          }
-          return skillset;
-        }),
-      },
-    }));
-  };
-
-  handleSkillsetDelete = (e) => {
-    this.setState((prevState) => ({
-      cvData: {
-        ...prevState.cvData,
-        skillsets: prevState.cvData.skillsets.filter((skillset) => {
-          return (
-            skillset.id !==
-            e.target.parentElement.getAttribute('data-skillset-id')
-          );
-        }),
-      },
-    }));
-  };
-
-  handleSkillDelete = (e) => {
-    this.setState((prevState) => ({
-      cvData: {
-        ...prevState.cvData,
-        skillsets: prevState.cvData.skillsets.map((skillset) => {
-          if (
-            skillset.id ===
-            e.target.parentElement.getAttribute('data-skillset-id')
-          ) {
-            return {
-              ...skillset,
-              skills: skillset.skills.filter((skill) => {
-                return (
-                  skill.id !==
-                  e.target.parentElement.getAttribute('data-skill-id')
-                );
-              }),
-            };
-          }
-          return skillset;
-        }),
-      },
-    }));
-  };
-
-  handleSkillsetAdd = () => {
-    this.setState((prevState) => ({
-      cvData: {
-        ...prevState.cvData,
-        skillsets: prevState.cvData.skillsets.concat(prevState.skillset),
-      },
-      skillset: {
-        id: uniqid(),
-        title: '',
-        skills: [],
-      },
-    }));
-  };
-
-  handleSkillAdd = (e) => {
-    this.setState((prevState) => ({
-      cvData: {
-        ...prevState.cvData,
-        skillsets: prevState.cvData.skillsets.map((skillset) => {
-          if (
-            skillset.id ===
-            e.target.parentElement.getAttribute('data-skillset-id')
-          ) {
-            return {
-              ...skillset,
-              skills: skillset.skills.concat(prevState.skill),
-            };
-          }
-          return skillset;
-        }),
-      },
-      skill: {
-        title: '',
-        id: uniqid(),
-      },
-    }));
-  };
-
-  handleExperienceChange = (e) => {
-    this.setState((prevState) => ({
-      cvData: {
-        ...prevState.cvData,
-        experience: prevState.cvData.experience.map((position) => {
-          if (
-            position.id ===
-            e.target.parentElement.getAttribute('data-position-id')
-          ) {
-            return {
-              ...position,
-              [e.target.getAttribute('id')]: e.target.value,
-            };
-          }
-          return position;
-        }),
-      },
-    }));
-  };
-
-  handleExperienceDelete = (e) => {
-    this.setState((prevState) => ({
-      cvData: {
-        ...prevState.cvData,
-        experience: prevState.cvData.experience.filter((position) => {
-          return (
-            position.id !==
-            e.target.parentElement.getAttribute('data-position-id')
-          );
-        }),
-      },
-    }));
-  };
-
-  handleExperienceAdd = () => {
-    this.setState((prevState) => ({
-      cvData: {
-        ...prevState.cvData,
-        experience: prevState.cvData.experience.concat(prevState.position),
-      },
-      position: {
-        position: '',
-        company: '',
-        from: '',
-        to: '',
-        description: '',
-        id: uniqid(),
-      },
-    }));
-  };
-
-  handleEducationChange = (e) => {
-    this.setState((prevState) => ({
-      cvData: {
-        ...prevState.cvData,
-        education: prevState.cvData.education.map((school) => {
-          if (
-            school.id === e.target.parentElement.getAttribute('data-school-id')
-          ) {
-            return {
-              ...school,
-              [e.target.getAttribute('id')]: e.target.value,
-            };
-          }
-          return school;
-        }),
-      },
-    }));
-  };
-
-  handleEducationDelete = (e) => {
-    this.setState((prevState) => ({
-      cvData: {
-        ...prevState.cvData,
-        education: prevState.cvData.education.filter((school) => {
-          return (
-            school.id !== e.target.parentElement.getAttribute('data-school-id')
-          );
-        }),
-      },
-    }));
-  };
-
-  handleEducationAdd = () => {
-    this.setState((prevState) => ({
-      cvData: {
-        ...prevState.cvData,
-        education: prevState.cvData.education.concat(prevState.school),
-      },
-      school: {
-        field: '',
-        school: '',
-        from: '',
-        to: '',
-        description: '',
-        id: uniqid(),
-      },
-    }));
-  };
-
-  handleAutofill = () => {
-    this.setState({
-      cvData: autofillData,
+    setSkillset({
+      id: uniqid(),
+      title: '',
+      skills: [],
     });
   };
 
-  handleReset = () => {
-    this.setState({
-      cvData: resetData,
+  const handleSkillsetChange = (e) => {
+    setCvData((prevState) => ({
+      ...prevState,
+      skillsets: prevState.skillsets.map((skillsetsItem) => {
+        if (
+          skillsetsItem.id ===
+          e.target.parentElement.getAttribute('data-skillset-id')
+        ) {
+          return {
+            ...skillsetsItem,
+            title: e.target.value,
+          };
+        }
+        return skillsetsItem;
+      }),
+    }));
+  };
+
+  const handleSkillsetDelete = (e) => {
+    setCvData((prevState) => ({
+      ...prevState,
+      skillsets: prevState.skillsets.filter((skillsetsItem) => {
+        return (
+          skillsetsItem.id !==
+          e.target.parentElement.getAttribute('data-skillset-id')
+        );
+      }),
+    }));
+  };
+
+  const handleSkillAdd = (e) => {
+    setCvData((prevState) => ({
+      ...prevState,
+      skillsets: prevState.skillsets.map((skillsetsItem) => {
+        if (
+          skillsetsItem.id ===
+          e.target.parentElement.getAttribute('data-skillset-id')
+        ) {
+          return {
+            ...skillsetsItem,
+            skills: skillsetsItem.skills.concat(skill),
+          };
+        }
+        return skillsetsItem;
+      }),
+    }));
+    setSkill({
+      title: '',
+      id: uniqid(),
     });
   };
 
-  render() {
-    const { cvData, editMode } = this.state;
-    const {
-      toggleMode,
-      handlePersonalChange,
-      handleSkillsetChange,
-      handleSkillChange,
-      handleSkillsetDelete,
-      handleSkillDelete,
-      handleSkillsetAdd,
-      handleSkillAdd,
-      handleExperienceChange,
-      handleExperienceDelete,
-      handleExperienceAdd,
-      handleEducationChange,
-      handleEducationDelete,
-      handleEducationAdd,
-      handleAutofill,
-      handleReset,
-    } = this;
+  const handleSkillChange = (e) => {
+    setCvData((prevState) => ({
+      ...prevState,
+      skillsets: prevState.skillsets.map((skillsetsItem) => {
+        if (
+          skillsetsItem.id ===
+          e.target.parentElement.getAttribute('data-skillset-id')
+        ) {
+          return {
+            ...skillsetsItem,
+            skills: skillsetsItem.skills.map((skillsItem) => {
+              if (
+                skillsItem.id ===
+                e.target.parentElement.getAttribute('data-skill-id')
+              ) {
+                return {
+                  ...skillsItem,
+                  title: e.target.value,
+                };
+              }
+              return skillsItem;
+            }),
+          };
+        }
+        return skillsetsItem;
+      }),
+    }));
+  };
 
-    return (
-      <main className="flex grow flex-col py-8 px-4">
-        <div className="flex justify-center gap-8">
-          <Button
-            handleClick={toggleMode}
-            value={editMode ? 'Preview mode' : 'Edit mode'}
-          />
-          {editMode ? (
-            <>
-              <Button handleClick={handleAutofill} value="Autofill" />
-              <Button handleClick={handleReset} value="Reset" />
-            </>
-          ) : null}
-        </div>
-        <Cv
-          cvData={cvData}
-          editMode={editMode}
-          handlePersonalChange={handlePersonalChange}
-          handleSkillsetChange={handleSkillsetChange}
-          handleSkillChange={handleSkillChange}
-          handleSkillsetDelete={handleSkillsetDelete}
-          handleSkillDelete={handleSkillDelete}
-          handleSkillsetAdd={handleSkillsetAdd}
-          handleSkillAdd={handleSkillAdd}
-          handleExperienceChange={handleExperienceChange}
-          handleExperienceDelete={handleExperienceDelete}
-          handleExperienceAdd={handleExperienceAdd}
-          handleEducationChange={handleEducationChange}
-          handleEducationDelete={handleEducationDelete}
-          handleEducationAdd={handleEducationAdd}
+  const handleSkillDelete = (e) => {
+    setCvData((prevState) => ({
+      ...prevState,
+      skillsets: prevState.skillsets.map((skillsetsItem) => {
+        if (
+          skillsetsItem.id ===
+          e.target.parentElement.getAttribute('data-skillset-id')
+        ) {
+          return {
+            ...skillsetsItem,
+            skills: skillsetsItem.skills.filter((skillsItem) => {
+              return (
+                skillsItem.id !==
+                e.target.parentElement.getAttribute('data-skill-id')
+              );
+            }),
+          };
+        }
+        return skillsetsItem;
+      }),
+    }));
+  };
+
+  const handleExperienceAdd = () => {
+    setCvData((prevState) => ({
+      ...prevState,
+      experience: prevState.experience.concat(position),
+    }));
+    setPosition({
+      position: '',
+      company: '',
+      from: '',
+      to: '',
+      description: '',
+      id: uniqid(),
+    });
+  };
+
+  const handleExperienceChange = (e) => {
+    setCvData((prevState) => ({
+      ...prevState,
+      experience: prevState.experience.map((positionsItem) => {
+        if (
+          positionsItem.id ===
+          e.target.parentElement.getAttribute('data-position-id')
+        ) {
+          return {
+            ...positionsItem,
+            [e.target.getAttribute('id')]: e.target.value,
+          };
+        }
+        return positionsItem;
+      }),
+    }));
+  };
+
+  const handleExperienceDelete = (e) => {
+    setCvData((prevState) => ({
+      ...prevState,
+      experience: prevState.experience.filter((positionsItem) => {
+        return (
+          positionsItem.id !==
+          e.target.parentElement.getAttribute('data-position-id')
+        );
+      }),
+    }));
+  };
+
+  const handleEducationAdd = () => {
+    setCvData((prevState) => ({
+      ...prevState,
+      education: prevState.education.concat(school),
+    }));
+    setSchool({
+      field: '',
+      school: '',
+      from: '',
+      to: '',
+      description: '',
+      id: uniqid(),
+    });
+  };
+
+  const handleEducationChange = (e) => {
+    setCvData((prevState) => ({
+      ...prevState,
+      education: prevState.education.map((schoolsItem) => {
+        if (
+          schoolsItem.id ===
+          e.target.parentElement.getAttribute('data-school-id')
+        ) {
+          return {
+            ...schoolsItem,
+            [e.target.getAttribute('id')]: e.target.value,
+          };
+        }
+        return schoolsItem;
+      }),
+    }));
+  };
+
+  const handleEducationDelete = (e) => {
+    setCvData((prevState) => ({
+      ...prevState,
+      education: prevState.education.filter((schoolsItem) => {
+        return (
+          schoolsItem.id !==
+          e.target.parentElement.getAttribute('data-school-id')
+        );
+      }),
+    }));
+  };
+
+  const handleAutofill = () => {
+    setCvData(autofillData);
+  };
+
+  const handleReset = () => {
+    setCvData(emptyData);
+  };
+
+  return (
+    <main className="flex grow flex-col py-8 px-4">
+      <div className="flex justify-center gap-8">
+        <Button
+          handleClick={toggleMode}
+          value={editMode ? 'Preview mode' : 'Edit mode'}
         />
-      </main>
-    );
-  }
+        {editMode ? (
+          <>
+            <Button handleClick={handleAutofill} value="Autofill" />
+            <Button handleClick={handleReset} value="Reset" />
+          </>
+        ) : null}
+      </div>
+      <Cv
+        cvData={cvData}
+        editMode={editMode}
+        handlePersonalChange={handlePersonalChange}
+        handleSkillsetAdd={handleSkillsetAdd}
+        handleSkillsetChange={handleSkillsetChange}
+        handleSkillsetDelete={handleSkillsetDelete}
+        handleSkillAdd={handleSkillAdd}
+        handleSkillChange={handleSkillChange}
+        handleSkillDelete={handleSkillDelete}
+        handleExperienceAdd={handleExperienceAdd}
+        handleExperienceChange={handleExperienceChange}
+        handleExperienceDelete={handleExperienceDelete}
+        handleEducationAdd={handleEducationAdd}
+        handleEducationChange={handleEducationChange}
+        handleEducationDelete={handleEducationDelete}
+      />
+    </main>
+  );
 }
 
 export default Builder;
