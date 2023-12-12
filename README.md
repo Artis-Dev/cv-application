@@ -40,7 +40,7 @@ Learning project from [The Odin Project](https://www.theodinproject.com/lessons/
 
 #### Third party code
 
-- [uniqid](https://github.com/adamhalasz/uniqid/)
+- [uuid](https://github.com/uuidjs/uuid)
 - [Google Fonts](https://fonts.google.com/)
 - [Font Awesome](https://fontawesome.com/)
 

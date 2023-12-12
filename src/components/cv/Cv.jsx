@@ -23,7 +23,7 @@ function Cv(props) {
   } = props;
 
   return (
-    <div className="container mx-auto my-8 max-w-3xl bg-white py-8 px-16">
+    <div className="container mx-auto my-8 max-w-3xl bg-white px-16 py-8">
       {editMode ? (
         <EditView
           cvData={cvData}

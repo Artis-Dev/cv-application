@@ -1,4 +1,4 @@
-import uniqid from 'uniqid';
+import { v4 as uuidv4 } from 'uuid';
 
 const autofillData = {
   personal: {
@@ -14,56 +14,56 @@ const autofillData = {
   },
   skillsets: [
     {
-      id: uniqid(),
+      id: uuidv4(),
       title: 'Technical languages',
       skills: [
         {
           title: 'C/C++',
-          id: uniqid(),
+          id: uuidv4(),
         },
         {
           title: 'Python',
-          id: uniqid(),
+          id: uuidv4(),
         },
         {
           title: 'Assembly',
-          id: uniqid(),
+          id: uuidv4(),
         },
       ],
     },
     {
-      id: uniqid(),
+      id: uuidv4(),
       title: 'Tools & Software',
       skills: [
         {
           title: 'Git',
-          id: uniqid(),
+          id: uuidv4(),
         },
         {
           title: 'GitHub',
-          id: uniqid(),
+          id: uuidv4(),
         },
         {
           title: 'VSCode',
-          id: uniqid(),
+          id: uuidv4(),
         },
       ],
     },
     {
-      id: uniqid(),
+      id: uuidv4(),
       title: 'Languages',
       skills: [
         {
           title: 'English',
-          id: uniqid(),
+          id: uuidv4(),
         },
         {
           title: 'Finnish',
-          id: uniqid(),
+          id: uuidv4(),
         },
         {
           title: 'Swedish',
-          id: uniqid(),
+          id: uuidv4(),
         },
       ],
     },
@@ -76,7 +76,7 @@ const autofillData = {
       to: 'Present',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dolor ex, lacinia eget ornare et, vehicula vitae diam. Aenean scelerisque. ',
-      id: uniqid(),
+      id: uuidv4(),
     },
   ],
   education: [
@@ -87,7 +87,7 @@ const autofillData = {
       to: '1996',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dolor ex, lacinia eget ornare et, vehicula vitae diam. Aenean scelerisque. ',
-      id: uniqid(),
+      id: uuidv4(),
     },
   ],
 };

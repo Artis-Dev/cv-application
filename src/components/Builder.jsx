@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import uniqid from 'uniqid';
+import { v4 as uuidv4 } from 'uuid';
 
 import autofillData from '../utils/autofill';
 import emptyData from '../utils/emptyCv';
@@ -10,13 +10,13 @@ function Builder() {
   const [editMode, setEditMode] = useState(true);
   const [cvData, setCvData] = useState(emptyData);
   const [skillset, setSkillset] = useState({
-    id: uniqid(),
+    id: uuidv4(),
     title: '',
     skills: [],
   });
   const [skill, setSkill] = useState({
     title: '',
-    id: uniqid(),
+    id: uuidv4(),
   });
   const [position, setPosition] = useState({
     position: '',
@@ -24,7 +24,7 @@ function Builder() {
     from: '',
     to: '',
     description: '',
-    id: uniqid(),
+    id: uuidv4(),
   });
   const [school, setSchool] = useState({
     field: '',
@@ -32,7 +32,7 @@ function Builder() {
     from: '',
     to: '',
     description: '',
-    id: uniqid(),
+    id: uuidv4(),
   });
 
   const toggleMode = () => {
@@ -55,7 +55,7 @@ function Builder() {
       skillsets: prevState.skillsets.concat(skillset),
     }));
     setSkillset({
-      id: uniqid(),
+      id: uuidv4(),
       title: '',
       skills: [],
     });
@@ -82,12 +82,11 @@ function Builder() {
   const handleSkillsetDelete = (e) => {
     setCvData((prevState) => ({
       ...prevState,
-      skillsets: prevState.skillsets.filter((skillsetsItem) => {
-        return (
+      skillsets: prevState.skillsets.filter(
+        (skillsetsItem) =>
           skillsetsItem.id !==
-          e.target.parentElement.getAttribute('data-skillset-id')
-        );
-      }),
+          e.target.parentElement.getAttribute('data-skillset-id'),
+      ),
     }));
   };
 
@@ -109,7 +108,7 @@ function Builder() {
     }));
     setSkill({
       title: '',
-      id: uniqid(),
+      id: uuidv4(),
     });
   };
 
@@ -152,12 +151,11 @@ function Builder() {
         ) {
           return {
             ...skillsetsItem,
-            skills: skillsetsItem.skills.filter((skillsItem) => {
-              return (
+            skills: skillsetsItem.skills.filter(
+              (skillsItem) =>
                 skillsItem.id !==
-                e.target.parentElement.getAttribute('data-skill-id')
-              );
-            }),
+                e.target.parentElement.getAttribute('data-skill-id'),
+            ),
           };
         }
         return skillsetsItem;
@@ -176,7 +174,7 @@ function Builder() {
       from: '',
       to: '',
       description: '',
-      id: uniqid(),
+      id: uuidv4(),
     });
   };
 
@@ -201,12 +199,11 @@ function Builder() {
   const handleExperienceDelete = (e) => {
     setCvData((prevState) => ({
       ...prevState,
-      experience: prevState.experience.filter((positionsItem) => {
-        return (
+      experience: prevState.experience.filter(
+        (positionsItem) =>
           positionsItem.id !==
-          e.target.parentElement.getAttribute('data-position-id')
-        );
-      }),
+          e.target.parentElement.getAttribute('data-position-id'),
+      ),
     }));
   };
 
@@ -221,7 +218,7 @@ function Builder() {
       from: '',
       to: '',
       description: '',
-      id: uniqid(),
+      id: uuidv4(),
     });
   };
 
@@ -246,12 +243,11 @@ function Builder() {
   const handleEducationDelete = (e) => {
     setCvData((prevState) => ({
       ...prevState,
-      education: prevState.education.filter((schoolsItem) => {
-        return (
+      education: prevState.education.filter(
+        (schoolsItem) =>
           schoolsItem.id !==
-          e.target.parentElement.getAttribute('data-school-id')
-        );
-      }),
+          e.target.parentElement.getAttribute('data-school-id'),
+      ),
     }));
   };
 
@@ -264,7 +260,7 @@ function Builder() {
   };
 
   return (
-    <main className="flex grow flex-col py-8 px-4">
+    <main className="flex grow flex-col px-4 py-8">
       <div className="flex justify-center gap-8">
         <Button
           handleClick={toggleMode}

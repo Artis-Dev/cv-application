@@ -20,7 +20,7 @@ function Button(props) {
   return (
     <button
       onClick={handleClick}
-      className={`${buttonSize} rounded bg-slate-700 py-2 px-4 font-bold uppercase text-slate-100 duration-200 hover:bg-slate-600`}
+      className={`${buttonSize} rounded bg-slate-700 px-4 py-2 font-bold uppercase text-slate-100 duration-200 hover:bg-slate-600`}
       type="button"
     >
       {buttonValue}

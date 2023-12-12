@@ -12,7 +12,7 @@ function Footer() {
       </a>
       <p className="ml-4 border-l border-slate-500 pl-4">
         <a
-          className="  underline decoration-slate-500 "
+          className="underline decoration-slate-500 "
           href="https://github.com/Artis-Dev/cv-application"
           target="_blank"
           rel="noreferrer"
