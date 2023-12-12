@@ -4,6 +4,7 @@ import eslintPlugin from 'vite-plugin-eslint';
 
 export default defineConfig(() => {
   return {
+    base: '/cv-application/',
     build: {
       outDir: 'build',
     },
